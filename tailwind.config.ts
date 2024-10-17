@@ -12,8 +12,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        "main-black": "#202124",
+        "secondary-black": "#28292a",
+        "tertiary-black": "#3c4043",
+        "main-color": "#3fbfd5",
+        "main-white": "#d3d3d3",
+      },
+      fontFamily: {
+        raleway: "var(--font-raleway)",
+        montserrat: "var(--font-montserrat)",
       },
     },
   },
