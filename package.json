@@ -17,6 +17,9 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@iconify-json/iconamoon": "^1.2.1",
+    "@iconify-json/lets-icons": "^1.2.1",
+    "@iconify-json/solar": "^1.2.1",
     "@iconify/tailwind": "^1.1.3",
     "@types/node": "^20",
     "@types/react": "^18",
