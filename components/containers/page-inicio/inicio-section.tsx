@@ -6,6 +6,8 @@ interface Props {
   tituloSeccion: string;
   destino?: string;
   nombreDestino?: string;
+  customStyles?: string;
+  asideSection?: boolean;
 }
 
 export default function InicioSection({
@@ -13,12 +15,22 @@ export default function InicioSection({
   tituloSeccion,
   destino,
   nombreDestino,
+  customStyles,
+  asideSection,
 }: Props) {
   return (
-    <section className="rounded-xl p-[1px] bg-[#4d4d50]">
-      <div className="main-containerrelative bg-main-black rounded-xl text-main-white flex flex-col gap-8 lg:gap-12">
-        <header className="h-12 md:h-14 lg:h-16 w-fit bg-main-black pl-2 sm:pl-3 md:pl-4 lg:pl-6 pr-4 sm:pr-6 md:pr-8 lg:pr-10 flex items-center rounded-br-xl border border-[#4d4d50] relative z-[2] border-t-0 border-l-0 -top-[1px] -left-[1px]">
-          <h2 className="  uppercase text-lg md:text-3xl lg:text-4xl xl:text-5xl font-black tracking-tight italic">
+    <section className={`w-full h-full ${customStyles}`}>
+      <div
+        className={`main-container h- relative rounded-xl w-full bg-main-black/5 backdrop-blur-sm text-main-white flex flex-col gap-8 lg:gap-12 border border-[#4d4d50] ${
+          !destino && !nombreDestino && "pb-12 md:pb-14 lg:pb-16"
+        }`}
+      >
+        <header className="h-12 md:h-14 bg-main-black lg:h-16 w-fit pl-2 sm:pl-3 md:pl-4 lg:pl-6 pr-4 sm:pr-6 md:pr-8 lg:pr-10 flex items-center rounded-br-xl border border-[#4d4d50] relative z-[2] border-t-0 border-l-0 -top-[1px] -left-[1px]">
+          <h2
+            className={`uppercase text-lg md:text-3xl lg:text-4xl xl:text-5xl font-black tracking-tight italic ${
+              asideSection && "2xl:text-2xl"
+            }`}
+          >
             {tituloSeccion}
           </h2>
           <div className="rounded-border-decoration top-0 -right-10  after:left-0  after:border-[#4d4d50]"></div>
@@ -33,7 +45,9 @@ export default function InicioSection({
             <div className="rounded-border-decoration -bottom-0 -left-10 after:right-0 after:bottom-0 after:border-[#4d4d50]"></div>
             <Link
               href={destino}
-              className="uppercase  md:text-xl lg:text-2xl xl:text-3xl font-bold tracking-tight italic"
+              className={`uppercase md:text-xl lg:text-2xl xl:text-3xl font-bold tracking-tight italic ${
+                asideSection && "2xl:text-xl"
+              }`}
             >
               {nombreDestino}
             </Link>
