@@ -6,10 +6,13 @@ import MainContentTops from "@/components/pageInicio/MainContentTops";
 import MainContentPopulares from "@/components/pageInicio/MainContentPopulares";
 import MainContentGeneros from "@/components/pageInicio/MainContentGeneros";
 import MainContentHero from "@/components/pageInicio/MainContentHero";
+import RandomAnime from "@/components/pageInicio/RandomAnime";
+import MainContentTrailers from "@/components/pageInicio/MainContentTrailers";
 
 export default function Inicio() {
   return (
     <main className="flex flex-col gap-12 overflow-hidden relative z-[2]">
+      <RandomAnime />
       <HeroSection>
         <MainContentHero />
       </HeroSection>
@@ -19,6 +22,14 @@ export default function Inicio() {
           customStyles=" 2xl:col-start-1 2xl:row-start-1"
         >
           <MainContentPopulares />
+        </InicioSection>
+        <InicioSection
+          tituloSeccion="ultimos trailers"
+          customStyles=" 2xl:col-start-1 2xl:col-span-2 bg-secondary-black/60 rounded-xl"
+          nombreDestino="ver mas trailers"
+          destino="/trailers"
+        >
+          <MainContentTrailers />
         </InicioSection>
         <InicioSection
           tituloSeccion="capitulos recientes"
@@ -39,7 +50,7 @@ export default function Inicio() {
 
         <InicioSection
           tituloSeccion="top historico"
-          customStyles=" 2xl:col-start-2 2xl:row-start-2 2xl:row-span-2"
+          customStyles=" 2xl:col-start-2 2xl:row-start-3 2xl:row-span-2"
           nombreDestino="ver mas tops"
           destino="/tops"
           asideSection={true}
