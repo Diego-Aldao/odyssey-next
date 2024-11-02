@@ -11,7 +11,7 @@ import MainContentTrailers from "@/components/pageInicio/MainContentTrailers";
 
 export default function Inicio() {
   return (
-    <main className="flex flex-col gap-12 overflow-hidden relative z-[2]">
+    <main className="flex flex-col gap-12 overflow-hidden relative z-[2] px-2 pt-16 md:pt-20 lg:pt-[96px] md:px-8 lg:px-10">
       <RandomAnime />
       <HeroSection>
         <MainContentHero />

@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${raleway.className} ${montserrat.variable} relative after:inset-0 after:absolute after:opacity-10 after:bg-main-black after:bg-contain antialiased bg-main-black w-full min-h-screen px-2 sm:px-4 pt-2 sm:pt-4 lg:pt-6 lg:px-6`}
+        className={`${raleway.className} ${montserrat.variable} relative after:inset-0 after:absolute after:opacity-10 after:bg-main-black after:bg-contain antialiased bg-main-black w-full min-h-screen `}
       >
         <Providers>
           <Nav />
