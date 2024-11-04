@@ -5,14 +5,18 @@ import { populares } from "@/data/populares";
 import MainCard from "../cards/MainCard";
 import { LocalMainGenero } from "@/types/localTypes";
 import { LISTADO_MAIN_GENEROS } from "@/constants";
+import MainButton from "../buttons/MainButton";
 
 export default function MainContentPopulares() {
   const [currentGenero, setCurrentGenero] = useState<LocalMainGenero | null>(
     null
   );
 
-  const handleGenero = (genero: LocalMainGenero) => {
-    setCurrentGenero(genero);
+  const handleGenero = (id: number) => {
+    const generoClickeado = LISTADO_MAIN_GENEROS.filter(
+      (genero) => genero.id === id
+    )[0];
+    setCurrentGenero(generoClickeado);
   };
 
   return (
@@ -20,23 +24,25 @@ export default function MainContentPopulares() {
       <header className="flex flex-col gap-8">
         <ul className="flex gap-2 md:gap-3 items-center overflow-x-scroll xl:gap-8 pb-2">
           {LISTADO_MAIN_GENEROS.map((genero) => (
-            <li
-              onClick={() => {
-                handleGenero(genero);
-              }}
-              key={genero.id}
-              className={`py-3 px-4 md:py-4 md:px-6 lg:px-8 border rounded-xl flex items-center gap-1 transition-colors hover:border-main-color cursor-pointer ${
-                currentGenero === genero
-                  ? "border-main-black bg-main-color text-main-black"
-                  : "border-main-white/20 bg-secondary-black/50 text-main-white"
-              }`}
-            >
-              <span
-                className={`${genero.icono} lg:h-5 lg:w-5 text-inherit`}
-              ></span>
-              <span className="capitalize text-xs md:text-sm lg:text-base font-montserrat font-semibold text-inherit">
-                {genero.nombre}
-              </span>
+            <li key={genero.id}>
+              <MainButton
+                handleClick={() => {
+                  handleGenero(genero.id);
+                }}
+                id={genero.id}
+                customStyles={`md:py-4 md:px-6 lg:px-8 ${
+                  currentGenero === genero
+                    ? "border-main-black bg-main-color text-main-black"
+                    : "border-main-white/20 bg-secondary-black/50 text-main-white"
+                }`}
+              >
+                <span
+                  className={`${genero.icono} lg:h-5 lg:w-5 text-inherit`}
+                ></span>
+                <span className="capitalize text-xs md:text-sm lg:text-base font-montserrat font-semibold text-inherit">
+                  {genero.nombre}
+                </span>
+              </MainButton>
             </li>
           ))}
         </ul>
