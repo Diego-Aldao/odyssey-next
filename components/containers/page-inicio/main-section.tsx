@@ -10,7 +10,7 @@ interface Props {
   asideSection?: boolean;
 }
 
-export default function InicioSection({
+export default function MainSection({
   children,
   tituloSeccion,
   destino,
@@ -21,11 +21,11 @@ export default function InicioSection({
   return (
     <section className={`w-full h-full ${customStyles}`}>
       <div
-        className={`main-container h- relative rounded-xl w-full bg-main-black/5 backdrop-blur-sm text-main-white flex flex-col gap-8 lg:gap-12 border border-[#4d4d50] ${
+        className={`main-container bg-main-black/60 rounded-xl w-full text-main-white flex flex-col gap-8 lg:gap-12 border border-[#4d4d50] ${
           !destino && !nombreDestino && "pb-12 md:pb-14 lg:pb-16"
         }`}
       >
-        <header className="h-12 md:h-14 bg-main-black lg:h-16 w-fit pl-2 sm:pl-3 md:pl-4 lg:pl-6 pr-4 sm:pr-6 md:pr-8 lg:pr-10 flex items-center rounded-br-xl border border-[#4d4d50] relative z-[2] border-t-0 border-l-0 -top-[1px] -left-[1px]">
+        <header className="h-12 md:h-14 bg-main-black rounded-tl-lg lg:h-16 w-fit pl-2 sm:pl-3 md:pl-4 lg:pl-6 pr-4 sm:pr-6 md:pr-8 lg:pr-10 flex items-center rounded-br-xl border border-[#4d4d50] relative z-[2] border-t-0 border-l-0 -top-[1px] -left-[1px]">
           <h2
             className={`uppercase text-lg md:text-3xl lg:text-4xl xl:text-5xl font-black tracking-tight italic ${
               asideSection && "2xl:text-2xl"
