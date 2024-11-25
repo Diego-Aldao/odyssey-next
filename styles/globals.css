@@ -8,9 +8,10 @@
   --tertiary-black: #3c4043;
   --main-color: #3fbfd5;
   --main-white: #d3d3d3;
+  --secondary-black: #28292a;
 }
 
-body:after {
+.background {
   background-image: url("../assets/bg3.png");
 }
 
@@ -38,4 +39,31 @@ img {
 
 .rounded-border-decoration {
   @apply absolute h-10 w-10 overflow-hidden bg-transparent after:absolute after:w-[200%] after:h-[200%] after:rounded-[15px] after:[box-shadow:_10px_10px_5px_100px_#202124] after:border pointer-events-none;
+}
+
+/*ESTILOS PARA LA SCROLLBAR*/
+
+ul::-webkit-scrollbar {
+  height: 8px;
+}
+
+/* Track */
+ul::-webkit-scrollbar-track {
+  background: var(--secondary-black);
+  border-radius: 4px;
+}
+
+/* Handle */
+ul::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 4px;
+  cursor: grab;
+}
+ul::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
+}
+
+/* Handle on hover */
+ul::-webkit-scrollbar-thumb:hover {
+  background: #1690a5;
 }
