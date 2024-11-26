@@ -17,6 +17,9 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@iconify-json/emojione-monotone": "^1.2.0",
+    "@iconify-json/fa6-solid": "^1.2.1",
+    "@iconify-json/game-icons": "^1.2.0",
     "@iconify-json/iconamoon": "^1.2.1",
     "@iconify-json/lets-icons": "^1.2.1",
     "@iconify-json/solar": "^1.2.1",
