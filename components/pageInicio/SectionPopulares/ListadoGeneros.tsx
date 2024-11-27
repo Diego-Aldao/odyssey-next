@@ -67,7 +67,7 @@ export const LISTADO_MAIN_GENEROS: LocalMainGenero[] = [
 
 export default function ListadoGeneros({ handleGenero, currentGenero }: Props) {
   return (
-    <ul className="flex gap-2 md:gap-3 items-center overflow-x-scroll xl:gap-8 pb-4">
+    <ul className="flex gap-2 md:gap-3 items-center overflow-x-scroll xl:gap-8 pb-4 custom-scroll">
       {LISTADO_MAIN_GENEROS.map((genero) => (
         <li key={genero.id}>
           <MainButton
