@@ -26,7 +26,7 @@ export default function RankCard({
         {numeroLista}
       </span>
       <div className="imagen relative w-[55%] h-full bg-main-black -left-8">
-        <Image src={imagen} alt="" width={0} height={0} sizes="100vw" />
+        <Image src={imagen || ""} alt="" width={0} height={0} sizes="100vw" />
       </div>
       {children}
     </Link>
