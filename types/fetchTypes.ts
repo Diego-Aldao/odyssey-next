@@ -458,3 +458,52 @@ export type Score = {
   votes: number;
   percentage: number;
 };
+
+export type FetchAnimeReviews = {
+  pagination: Pagination;
+  data: Review[];
+};
+
+export type Review = {
+  mal_id: number;
+  url: string;
+  type: "anime";
+  reactions: Reactions;
+  date: Date;
+  review: string;
+  score: number;
+  tags: Tag[];
+  is_spoiler: boolean;
+  is_preliminary: boolean;
+  episodes_watched: null;
+  user: User;
+};
+
+export type Reactions = {
+  overall: number;
+  nice: number;
+  love_it: number;
+  funny: number;
+  confusing: number;
+  informative: number;
+  well_written: number;
+  creative: number;
+};
+
+export type Tag =
+  | "Recommended"
+  | "Not Recommended"
+  | "Funny"
+  | "Well-written"
+  | "Mixed Feelings"
+  | "Informative";
+
+export type User = {
+  url: string;
+  username: string;
+  images: { [key: string]: ImageReview };
+};
+
+export type ImageReview = {
+  image_url: string;
+};
