@@ -53,10 +53,10 @@ export default function VideoCard({
           {nombreAnime}
         </Link>
         <div
-          className="p-[2px] sm:p-1 bg-tertiary-black rounded-xl transition-colors relative hover:bg-main-color"
+          className="p-[2px] sm:p-1 bg-tertiary-black rounded-xl transition-colors relative hover:bg-main-color cursor-pointer"
           onClick={handleClick}
         >
-          <div className="play absolute p-2 w-fit h-fit inset-0 mx-auto my-auto rounded-full bg-main-black/50 backdrop-blur-sm flex items-center justify-center group-hover:bg-main-black transition-colors cursor-pointer z-[2] group hover:bg-main-black">
+          <div className="play absolute p-2 w-fit h-fit inset-0 mx-auto my-auto rounded-full bg-main-black/50 backdrop-blur-sm flex items-center justify-center group-hover:bg-main-black transition-colors z-[2] group hover:bg-main-black">
             <span
               className={`icon-[game-icons--play-button] h-8 w-8 text-main-white ml-1 group-hover:text-main-color transition-colors ${customStylesButton}`}
             ></span>
