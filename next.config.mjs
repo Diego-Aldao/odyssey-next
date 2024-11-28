@@ -8,6 +8,9 @@ const nextConfig = {
       {
         hostname: "img.youtube.com",
       },
+      {
+        hostname: "img1.ak.crunchyroll.com",
+      },
     ],
   },
 };
