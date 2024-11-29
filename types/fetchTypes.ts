@@ -507,3 +507,58 @@ export type User = {
 export type ImageReview = {
   image_url: string;
 };
+
+export type FetchCharacter = {
+  data: Personaje;
+};
+
+export type Personaje = {
+  mal_id: number;
+  url: string;
+  images: PersonajeImages;
+  name: string;
+  name_kanji: string;
+  nicknames: string[];
+  favorites: number;
+  about: string;
+  anime: AnimeElement[];
+  manga: Manga[];
+  voices: Voice[];
+};
+
+export type AnimeElement = {
+  role: Role;
+  anime: MangaClass;
+};
+
+export type MangaClass = {
+  mal_id: number;
+  url: string;
+  images: { [key: string]: Image };
+  title: string;
+};
+
+export type Role = "Main" | "Supporting";
+
+export type PersonajeImages = {
+  jpg: Jpg;
+  webp: Webp;
+};
+
+export type Manga = {
+  role: Role;
+  manga: MangaClass;
+};
+
+export type Voice = {
+  person: Person;
+  language: string;
+};
+
+export type FetchCharacterPictures = {
+  data: ImagenesPersonaje[];
+};
+
+export type ImagenesPersonaje = {
+  jpg: Jpg;
+};
