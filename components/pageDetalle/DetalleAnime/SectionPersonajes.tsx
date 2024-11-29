@@ -1,4 +1,4 @@
-import PersonajeCard from "@/components/cards/PersonajeCard";
+import SkewCard from "@/components/cards/SkewCard";
 import MainSection from "@/components/containers/page-inicio/main-section";
 import { BASE_URL_ANIME } from "@/constants";
 import fetchData from "@/services/fetchData";
@@ -23,13 +23,12 @@ export default async function SectionPersonajes({ id }: Props) {
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
         {mainPersonajes.map((personaje) => (
-          <PersonajeCard
+          <SkewCard
             key={personaje.character.mal_id}
             imagen={personaje.character.images.webp.image_url}
-            nombre={personaje.character.name}
-            rol={personaje.role}
-            voz={personaje.voice_actors[0]?.person?.name}
-            id={personaje.character.mal_id}
+            titulo={personaje.character.name}
+            subtitulo={personaje.role}
+            destino={`/personaje/${personaje.character.mal_id}`}
           />
         ))}
       </div>
