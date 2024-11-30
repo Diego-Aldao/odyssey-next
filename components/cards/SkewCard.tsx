@@ -7,6 +7,7 @@ interface Props {
   titulo: string;
   subtitulo: string;
   destino: string;
+  customImageStyles?: string;
 }
 
 export default function SkewCard({
@@ -14,6 +15,7 @@ export default function SkewCard({
   titulo,
   subtitulo,
   destino,
+  customImageStyles,
 }: Props) {
   return (
     <Link
@@ -28,7 +30,7 @@ export default function SkewCard({
           width={0}
           height={0}
           sizes="100vw"
-          className="scale-105 object-[50%,-30px] xl:object-[50%,-50px]"
+          className={`scale-105 object-[50%,-30px] xl:object-[50%,-50px] ${customImageStyles}`}
         />
       </span>
 
@@ -36,7 +38,9 @@ export default function SkewCard({
         <span className="font-medium text-sm lg:text-base text-right uppercase line-clamp-1 max-w-[70%]">
           {titulo}
         </span>
-        <span className="text-xs text-secondary-white">{subtitulo}</span>
+        <span className="text-xs text-secondary-white font-montserrat capitalize">
+          {subtitulo}
+        </span>
       </span>
     </Link>
   );
