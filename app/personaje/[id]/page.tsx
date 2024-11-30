@@ -1,13 +1,13 @@
-import PersonajesGridContainer from "@/components/containers/page-detalle/personajes-grid-container";
 import AsideSubInfo from "@/components/pageDetalle/DetallePersonaje/AsideSubInfo";
 import SectionDoblaje from "@/components/pageDetalle/DetallePersonaje/SectionDoblaje";
 import SectionHero from "@/components/pageDetalle/DetallePersonaje/SectionHero";
-import SectionImagenes from "@/components/pageDetalle/DetallePersonaje/SectionImagenes";
+import SectionImagenes from "@/components/pageDetalle/SectionImagenes";
 import SectionMainInfo from "@/components/pageDetalle/DetallePersonaje/SectionMainInfo";
 import { BASE_URL_PERSONAJES } from "@/constants";
 import fetchData from "@/services/fetchData";
 import { FetchCharacter } from "@/types/fetchTypes";
 import React from "react";
+import DetalleGridContainer from "@/components/containers/page-detalle/detalle-grid-container";
 
 interface Props {
   params: { [key: string]: string };
@@ -21,9 +21,9 @@ export default async function PaginaPersonaje({ params }: Props) {
 
   return (
     <main className="relative z-[2] w-full flex flex-col md:pt-56">
-      <SectionImagenes id={id} />
+      <SectionImagenes url={`${BASE_URL_PERSONAJES}/${id}/pictures`} />
       <SectionHero imagen={data.images.webp.image_url} />
-      <PersonajesGridContainer>
+      <DetalleGridContainer>
         <AsideSubInfo
           imagen={data.images.webp.image_url}
           participaciones={data.anime}
@@ -33,7 +33,7 @@ export default async function PaginaPersonaje({ params }: Props) {
           <SectionMainInfo nombre={data.name} about={data.about} />
           <SectionDoblaje voces={data.voices} />
         </section>
-      </PersonajesGridContainer>
+      </DetalleGridContainer>
     </main>
   );
 }
