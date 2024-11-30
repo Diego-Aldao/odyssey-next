@@ -10,6 +10,7 @@ interface Props {
   sinopsis: string;
   generos: Genre[];
   estado: string;
+  rankPopularidad: number;
 }
 
 interface ItemTraduccion {
@@ -44,6 +45,7 @@ export default function SectionHero({
   sinopsis,
   generos,
   estado,
+  rankPopularidad,
 }: Props) {
   return (
     <div className="hero h-[600px] md:h-[550px] xl:h-[650px] w-full flex flex-col items-start justify-end  max-w-[1440px] mx-auto lg:relative">
@@ -90,28 +92,34 @@ export default function SectionHero({
       <div className="image-focus w-full fixed h-full top-0 left-0 z-[-1]  peer-hover:z-[9] peer-hover:visible peer-hover:opacity-100 invisible opacity-0 peer-hover:bg-main-black/90 transition-opacity pointer-events-none"></div>
       <div className="hero-content flex-col gap-2 relative w-fit flex">
         <ul className="subinfo flex gap-4 flex-wrap pl-2 items-center relative w-fit">
-          <li className=" flex gap-2 items-center">
-            <span className="uppercase text-sm lg:text-base xl:text-lg font-bold font-montserrat">
+          <li className=" flex gap-1 items-center">
+            <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-semibold font-montserrat">
               {score}
             </span>
             <span className="icon-[solar--star-bold] h-3 w-3 lg:h-4 lg:w-4 xl:h-5 xl:w-5 text-main-color"></span>
           </li>
-          <li className="flex gap-2 items-center">
-            <span className="uppercase text-sm lg:text-base xl:text-lg font-bold font-montserrat">
+          <li className="flex gap-1 items-center">
+            <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-semibold font-montserrat">
               {año}
             </span>
             <span className="icon-[solar--calendar-bold] h-3 w-3 lg:h-4 lg:w-4 xl:h-5 xl:w-5 text-main-color"></span>
+          </li>
+          <li className="flex gap-1 items-center">
+            <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-semibold font-montserrat">
+              {rankPopularidad}
+            </span>
+            <span className="icon-[solar--graph-up-bold] h-3 w-3 lg:h-4 lg:w-4 xl:h-5 xl:w-5 text-main-color"></span>
           </li>
           <li className="py-1 px-4 rounded-full bg-main-black flex items-center gap-2">
             <span
               className={`w-1 h-1 lg:w-2 lg:h-2 rounded-full block ${estados[estado].color}`}
             ></span>
-            <span className="uppercase text-xs lg:text-sm xl:text-base font-bold font-montserrat">
+            <span className="capitalize text-xs lg:text-sm xl:text-base font-bold font-montserrat">
               {estados[estado].nombre}
             </span>
           </li>
         </ul>
-        <h1 className="font-montserrat tracking-tighter lg:max-w-[700px] xl:max-w-[850px] [text-shadow:_2px_2px_#000] uppercase line-clamp-2 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-2xl font-black italic relative">
+        <h1 className="font-montserrat tracking-tighter xl:pr-2 xl:pl-1 lg:max-w-[700px] xl:max-w-[850px] [text-shadow:_2px_2px_#000] uppercase line-clamp-2 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-2xl font-black italic relative">
           {titulo}
         </h1>
         <ul className="tags flex gap-2 flex-wrap relative w-fit">
