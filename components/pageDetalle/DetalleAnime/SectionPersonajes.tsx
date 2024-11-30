@@ -7,21 +7,29 @@ import React from "react";
 
 interface Props {
   id: string;
+  full?: boolean;
+  customGridStyles?: string;
 }
 
-export default async function SectionPersonajes({ id }: Props) {
+export default async function SectionPersonajes({
+  id,
+  full,
+  customGridStyles,
+}: Props) {
   const { data } = await fetchData<FetchAnimeCharacters>(
     `${BASE_URL_ANIME}/${id}/characters`
   );
-  const mainPersonajes = data.slice(0, 12);
+  const mainPersonajes = full ? data : data.slice(0, 12);
   return (
     <MainSection
       tituloSeccion="personajes"
-      customStyles="row-start-3 md:row-start-4 xl:row-start-3"
-      destino={`/anime/${id}/personajes`}
-      nombreDestino="ver todos"
+      customStyles={full ? "" : "row-start-3 md:row-start-4 xl:row-start-3"}
+      destino={full ? undefined : `/anime/${id}/personajes`}
+      nombreDestino={full ? undefined : "ver todos"}
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
+      <div
+        className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8 ${customGridStyles}`}
+      >
         {mainPersonajes.map((personaje) => (
           <SkewCard
             key={personaje.character.mal_id}
