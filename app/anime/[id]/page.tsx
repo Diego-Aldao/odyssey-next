@@ -33,6 +33,7 @@ export default async function PageDetalle({ params }: Props) {
         generos={data.genres}
         año={data.year}
         estado={data.status}
+        rankPopularidad={data.popularity}
       />
       <AnimeGridContainer>
         <Suspense fallback={<MediaSkeleton />}>
