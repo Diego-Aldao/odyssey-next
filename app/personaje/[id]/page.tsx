@@ -1,8 +1,8 @@
 import AsideSubInfo from "@/components/pageDetalle/DetallePersonaje/AsideSubInfo";
 import SectionDoblaje from "@/components/pageDetalle/DetallePersonaje/SectionDoblaje";
-import SectionHero from "@/components/pageDetalle/DetallePersonaje/SectionHero";
+import SectionHero from "@/components/pageDetalle/SectionHero";
 import SectionImagenes from "@/components/pageDetalle/SectionImagenes";
-import SectionMainInfo from "@/components/pageDetalle/DetallePersonaje/SectionMainInfo";
+import SectionMainInfo from "@/components/pageDetalle/SectionMainInfo";
 import { BASE_URL_PERSONAJES } from "@/constants";
 import fetchData from "@/services/fetchData";
 import { FetchCharacter } from "@/types/fetchTypes";

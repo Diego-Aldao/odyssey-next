@@ -43,7 +43,7 @@ export default function SectionMainInfo({ nombre, about }: Props) {
 
   return (
     <div className="main-info flex flex-col gap-8">
-      <h1 className="font-montserrat tracking-tighter [text-shadow:_2px_2px_#000] uppercase line-clamp-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-black italic relative z-[2] w-full text-center md:text-start">
+      <h1 className="font-montserrat tracking-tighter pl-1 [text-shadow:_2px_2px_#000] uppercase line-clamp-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-black italic relative z-[2] w-full text-center md:text-start">
         {nombre}
       </h1>
       <div

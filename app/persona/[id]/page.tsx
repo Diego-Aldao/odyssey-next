@@ -1,7 +1,7 @@
 import SectionActuacionesVoz from "@/components/pageDetalle/DetallePersona/SectionActuacionesVoz";
-import SectionHero from "@/components/pageDetalle/DetallePersonaje/SectionHero";
+import SectionHero from "@/components/pageDetalle/SectionHero";
 import SectionImagenes from "@/components/pageDetalle/SectionImagenes";
-import SectionMainInfo from "@/components/pageDetalle/DetallePersonaje/SectionMainInfo";
+import SectionMainInfo from "@/components/pageDetalle/SectionMainInfo";
 import { BASE_URL_PERSONA } from "@/constants";
 import fetchData from "@/services/fetchData";
 import { FetchPerson } from "@/types/fetchTypes";

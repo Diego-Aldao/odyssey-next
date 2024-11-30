@@ -1,17 +1,14 @@
-import { BASE_URL_PERSONAJES } from "@/constants";
 import fetchData from "@/services/fetchData";
 import { FetchCharacterPictures } from "@/types/fetchTypes";
 import Image from "next/image";
 import React from "react";
 
 interface Props {
-  id: string;
+  url: string;
 }
 
-export default async function SectionImagenes({ id }: Props) {
-  const { data } = await fetchData<FetchCharacterPictures>(
-    `${BASE_URL_PERSONAJES}/${id}/pictures`
-  );
+export default async function SectionImagenes({ url }: Props) {
+  const { data } = await fetchData<FetchCharacterPictures>(url);
   return (
     <div className="hidden md:flex gap-4 pointer-events-none absolute grayscale opacity-10 top-0 pt-10 pb-20 w-full  justify-center overflow-hidden">
       {data.slice(0, 10).map((imagen, i) => (
@@ -27,7 +24,7 @@ export default async function SectionImagenes({ id }: Props) {
             width={0}
             height={0}
             sizes="100vw"
-            className="scale-105 "
+            className="scale-105"
           />
         </div>
       ))}
