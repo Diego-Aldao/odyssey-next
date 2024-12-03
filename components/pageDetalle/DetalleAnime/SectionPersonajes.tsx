@@ -19,7 +19,10 @@ export default async function SectionPersonajes({
   const { data } = await fetchData<FetchAnimeCharacters>(
     `${BASE_URL_ANIME}/${id}/characters`
   );
-  const mainPersonajes = full ? data : data.slice(0, 12);
+  const personajesOrdenados = data.sort((a, b) => b.favorites - a.favorites);
+  const mainPersonajes = full
+    ? personajesOrdenados
+    : personajesOrdenados.slice(0, 12);
   return (
     <MainSection
       tituloSeccion="personajes"
