@@ -26,3 +26,12 @@ export interface SelectedTrailer {
   titulo: string;
   url: string;
 }
+
+export interface LocalItemTraduccion {
+  nombre: string;
+  color: string;
+}
+
+export interface LocalObjetoTraduccion {
+  [key: string]: LocalItemTraduccion;
+}
