@@ -1,4 +1,5 @@
 import { Genre } from "@/types/fetchTypes";
+import { LocalObjetoTraduccion } from "@/types/localTypes";
 import Image from "next/image";
 import React from "react";
 
@@ -13,16 +14,7 @@ interface Props {
   rankPopularidad: number;
 }
 
-interface ItemTraduccion {
-  nombre: string;
-  color: string;
-}
-
-interface ObjetoTraduccion {
-  [key: string]: ItemTraduccion;
-}
-
-const estados: ObjetoTraduccion = {
+const estados: LocalObjetoTraduccion = {
   "Finished Airing": {
     nombre: "finalizado",
     color: "bg-red-500",
@@ -89,7 +81,7 @@ export default function SectionHero({
           className="object-[50%,0px] skew-x-[-60deg]"
         />
       </div>
-      <div className="image-focus w-full fixed h-full top-0 left-0 z-[-1]  peer-hover:z-[9] peer-hover:visible peer-hover:opacity-100 invisible opacity-0 peer-hover:bg-main-black/90 transition-opacity pointer-events-none"></div>
+      <div className="image-focus w-full fixed h-full top-0 left-0 z-[-1] peer-hover:z-[9] peer-hover:visible peer-hover:opacity-100 invisible opacity-0 peer-hover:bg-main-black/90 transition-opacity pointer-events-none"></div>
       <div className="hero-content flex-col gap-2 relative w-fit flex">
         <ul className="subinfo flex gap-4 flex-wrap pl-2 items-center relative w-fit">
           <li className=" flex gap-1 items-center">
@@ -131,7 +123,7 @@ export default function SectionHero({
             </li>
           ))}
         </ul>
-        <p className="text-sm text-secondary-white max-w-[500px] md:max-w-[600px] md:line-clamp-6 relative line-clamp-[8] lg:bg-main-black/50 rounded-md lg:backdrop-blur-sm">
+        <p className="text-xs lg:text-sm text-secondary-white max-w-[500px] md:max-w-[600px] xl:max-w-[750px] md:line-clamp-6 relative line-clamp-[8] xl:line-clamp-[10] lg:bg-main-black/50 rounded-md lg:backdrop-blur-sm">
           {sinopsis}
         </p>
       </div>
