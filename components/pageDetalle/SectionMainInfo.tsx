@@ -4,7 +4,7 @@ import React from "react";
 
 interface Props {
   nombre: string;
-  about: string;
+  about: string | null;
 }
 
 interface Traducciones {
@@ -38,7 +38,7 @@ const CHARACTER_ABOUT_TRANSLATE: Traducciones = {
 };
 
 export default function SectionMainInfo({ nombre, about }: Props) {
-  const [primerParte, segundaParte] = splitStringAboutCharacter(about);
+  const [primerParte, segundaParte] = splitStringAboutCharacter(about || "");
   const objetoParseado = parseStringAboutCharacter(primerParte);
 
   return (
@@ -65,14 +65,16 @@ export default function SectionMainInfo({ nombre, about }: Props) {
             </div>
           ))}
       </div>
-      <div className="sinopsis flex flex-col gap-2 lg:gap-4">
-        <h2 className="uppercase text-xl md:text-2xl lg:text-3xl xl:text-4xl font-montserrat font-black italic ">
-          sinopsis
-        </h2>
-        <p className="text-xs lg:text-sm text-secondary-white line-clamp-[10] md:line-clamp-[20] whitespace-pre-line">
-          {segundaParte}
-        </p>
-      </div>
+      {about && (
+        <div className="sinopsis flex flex-col gap-2 lg:gap-4">
+          <h2 className="uppercase text-xl md:text-2xl lg:text-3xl xl:text-4xl font-montserrat font-black italic ">
+            sinopsis
+          </h2>
+          <p className="text-xs lg:text-sm text-secondary-white line-clamp-[10] md:line-clamp-[20] whitespace-pre-line">
+            {segundaParte}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
