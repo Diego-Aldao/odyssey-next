@@ -59,7 +59,7 @@ export default function SectionHero({
           className="object-[50%,0px] xl:object-[50%,10%] 2xl:object-[50%,20%]"
         />
       </div>
-      <div className="imagen hidden lg:block absolute skew-x-[60deg] top-24 xl:top-32 right-0 xl:right-10 overflow-hidden lg:w-[423px] lg:h-[600px] pointer-events-none hover:skew-x-0 transition-all hover:z-10 hover:scale-90 hover:xl:scale-100 rounded-xl peer group">
+      <div className="imagen hidden lg:block absolute skew-x-[60deg] top-24 xl:top-32 right-0 xl:right-10 overflow-hidden lg:w-[423px] lg:h-[600px] pointer-events-none hover:skew-x-0 transition-all hover:z-10 hover:top-32 hover:scale-90 hover:xl:scale-100 rounded-xl peer group">
         <Image
           src={imagen}
           alt=""
@@ -69,7 +69,7 @@ export default function SectionHero({
           className="object-[50%,150px] skew-x-[-60deg] hover:object-[50%-0px] transition-all pointer-events-auto hover:skew-x-0 "
         />
       </div>
-      <div className="imagen hidden lg:block absolute skew-x-[60deg] -top-0 xl:top-8 right-10 xl:right-20 grayscale -z-[1] overflow-hidden lg:w-[423px] lg:h-[600px] pointer-events-none peer-hover:scale-50 transition-all">
+      <div className="imagen hidden lg:block absolute skew-x-[60deg] top-8 right-10 xl:right-20 grayscale -z-[1] overflow-hidden lg:w-[423px] lg:h-[600px] pointer-events-none peer-hover:scale-50 transition-all">
         <Image
           src={imagen}
           alt=""
