@@ -139,10 +139,10 @@ export type Items = {
 
 export type FetchTops = {
   pagination: PaginationComplete;
-  data: TopEmision[];
+  data: Tops[];
 };
 
-export type TopEmision = {
+export type Tops = {
   mal_id: number;
   url: string;
   images: { [key: string]: Image };
@@ -457,4 +457,154 @@ export type Score = {
   score: number;
   votes: number;
   percentage: number;
+};
+
+export type FetchAnimeReviews = {
+  pagination: Pagination;
+  data: Review[];
+};
+
+export type Review = {
+  mal_id: number;
+  url: string;
+  type: string;
+  reactions: Reactions;
+  date: Date;
+  review: string;
+  score: number;
+  tags: Tag[];
+  is_spoiler: boolean;
+  is_preliminary: boolean;
+  episodes_watched: null;
+  user: User;
+};
+
+export type Reactions = {
+  overall: number;
+  nice: number;
+  love_it: number;
+  funny: number;
+  confusing: number;
+  informative: number;
+  well_written: number;
+  creative: number;
+};
+
+export type Tag =
+  | "Recommended"
+  | "Not Recommended"
+  | "Funny"
+  | "Well-written"
+  | "Mixed Feelings"
+  | "Informative";
+
+export type User = {
+  url: string;
+  username: string;
+  images: { [key: string]: ImageReview };
+};
+
+export type ImageReview = {
+  image_url: string;
+};
+
+export type FetchCharacter = {
+  data: Personaje;
+};
+
+export type Personaje = {
+  mal_id: number;
+  url: string;
+  images: PersonajeImages;
+  name: string;
+  name_kanji: string;
+  nicknames: string[];
+  favorites: number;
+  about: string | null;
+  anime: AnimeElement[];
+  manga: Manga[];
+  voices: Voice[];
+};
+
+export type AnimeElement = {
+  role: Role;
+  anime: MangaClass;
+};
+
+export type MangaClass = {
+  mal_id: number;
+  url: string;
+  images: { [key: string]: Image };
+  title: string;
+};
+
+export type Role = "Main" | "Supporting";
+
+export type PersonajeImages = {
+  jpg: Jpg;
+  webp: Webp;
+};
+
+export type Manga = {
+  role: Role;
+  manga: MangaClass;
+};
+
+export type Voice = {
+  person: Person;
+  language: string;
+};
+
+export type FetchCharacterPictures = {
+  data: ImagenesPersonaje[];
+};
+
+export type ImagenesPersonaje = {
+  jpg: Jpg;
+};
+
+export type FetchPerson = {
+  data: Persona;
+};
+
+export type Persona = {
+  mal_id: number;
+  url: string;
+  website_url: string;
+  images: ImagesPersona;
+  name: string;
+  given_name: string;
+  family_name: string;
+  alternate_names: [];
+  birthday: Date;
+  favorites: number;
+  about: string;
+  anime: AnimeParticipation[];
+  manga: [];
+  voices: VoicePersona[];
+};
+
+export type AnimeParticipation = {
+  position: string;
+  anime: MangaClass;
+};
+
+export type ImagesPersona = {
+  jpg: Jpg;
+};
+
+export type VoicePersona = {
+  role: Role;
+  anime: MangaClass;
+  character: Character;
+};
+
+export type FetchPersonVoiceActing = {
+  data: Doblaje[];
+};
+
+export type Doblaje = {
+  role: Role;
+  anime: MangaClass;
+  character: Character;
 };

@@ -9,12 +9,14 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 const raleway = Raleway({
   subsets: ["latin"],
   variable: "--font-raleway",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${raleway.className} ${montserrat.variable} relative antialiased bg-main-black w-full min-h-screen `}
+        className={`${raleway.variable} ${montserrat.variable} relative antialiased bg-main-black w-full min-h-screen `}
       >
         <div className="background w-full h-full bg-main-black opacity-15 absolute bg-contain"></div>
         <Providers>

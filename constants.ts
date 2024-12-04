@@ -133,6 +133,13 @@ export const BASE_URL_TEMPORADAS: string = "https://api.jikan.moe/v4/seasons";
 
 export const BASE_URL_TOPS: string = "https://api.jikan.moe/v4/top";
 
+export const BASE_URL_ANIME: string = "https://api.jikan.moe/v4/anime";
+
+export const BASE_URL_PERSONAJES: string =
+  "https://api.jikan.moe/v4/characters";
+
+export const BASE_URL_PERSONA: string = "https://api.jikan.moe/v4/people";
+
 export const LISTADO_ID_ANIME_RANDOM = [
   58572, 55855, 49073, 15227, 55774, 56845, 53590, 2402, 49757, 50306, 53633,
   54301, 56894, 48780, 54857, 55102, 55701, 58516, 54853, 54865, 55973, 52742,

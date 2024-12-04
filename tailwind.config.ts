@@ -24,7 +24,7 @@ const config: Config = {
         "tertiary-black": "#3c4043",
         "main-color": "#6ce2d3",
         "main-white": "#d3d3d3",
-        "secondary-white": "#8b8b8b",
+        "secondary-white": "#b1b3b6",
       },
       fontFamily: {
         raleway: "var(--font-raleway)",
