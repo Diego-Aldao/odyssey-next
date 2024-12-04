@@ -11,6 +11,11 @@ export interface LocalMainGenero {
   nombre: string;
   icono: string;
 }
+export interface LocalFullGenero {
+  id: number;
+  nombre: string;
+  cantidad: number;
+}
 
 export interface LocalTipoDeAnime {
   id: number;
