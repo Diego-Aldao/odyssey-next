@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Providers } from "./providers";
 import { Montserrat, Raleway } from "next/font/google";
-import Nav from "@/components/layout/Nav";
+import Nav from "@/components/layout/Nav/Nav";
 import Footer from "@/components/layout/Footer";
 
 const montserrat = Montserrat({
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className="dark">
       <body
         className={`${raleway.variable} ${montserrat.variable} relative antialiased bg-main-black w-full min-h-screen `}
       >
