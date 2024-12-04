@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { generos } from "@/data/generos";
 import MainButton from "../buttons/MainButton";
 import { useRouter } from "next/navigation";
 import MainSection from "../containers/page-inicio/main-section";
+import { LISTADO_ALL_GENEROS } from "@/constants";
 
 export default function SectionGeneros() {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function SectionGeneros() {
       asideSection={true}
     >
       <ul className="flex flex-wrap gap-2 lg:gap-4 2xl:justify-evenly">
-        {generos.map((genero) => (
+        {LISTADO_ALL_GENEROS.map((genero) => (
           <li key={genero.id} className="">
             <MainButton
               id={genero.id}
