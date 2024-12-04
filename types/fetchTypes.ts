@@ -139,10 +139,10 @@ export type Items = {
 
 export type FetchTops = {
   pagination: PaginationComplete;
-  data: TopEmision[];
+  data: Tops[];
 };
 
-export type TopEmision = {
+export type Tops = {
   mal_id: number;
   url: string;
   images: { [key: string]: Image };
@@ -467,7 +467,7 @@ export type FetchAnimeReviews = {
 export type Review = {
   mal_id: number;
   url: string;
-  type: "anime";
+  type: string;
   reactions: Reactions;
   date: Date;
   review: string;
@@ -520,7 +520,7 @@ export type Personaje = {
   name_kanji: string;
   nicknames: string[];
   favorites: number;
-  about: string;
+  about: string | null;
   anime: AnimeElement[];
   manga: Manga[];
   voices: Voice[];
@@ -561,4 +561,50 @@ export type FetchCharacterPictures = {
 
 export type ImagenesPersonaje = {
   jpg: Jpg;
+};
+
+export type FetchPerson = {
+  data: Persona;
+};
+
+export type Persona = {
+  mal_id: number;
+  url: string;
+  website_url: string;
+  images: ImagesPersona;
+  name: string;
+  given_name: string;
+  family_name: string;
+  alternate_names: [];
+  birthday: Date;
+  favorites: number;
+  about: string;
+  anime: AnimeParticipation[];
+  manga: [];
+  voices: VoicePersona[];
+};
+
+export type AnimeParticipation = {
+  position: string;
+  anime: MangaClass;
+};
+
+export type ImagesPersona = {
+  jpg: Jpg;
+};
+
+export type VoicePersona = {
+  role: Role;
+  anime: MangaClass;
+  character: Character;
+};
+
+export type FetchPersonVoiceActing = {
+  data: Doblaje[];
+};
+
+export type Doblaje = {
+  role: Role;
+  anime: MangaClass;
+  character: Character;
 };
