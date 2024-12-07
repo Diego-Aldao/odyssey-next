@@ -7,32 +7,24 @@ import {
 
 export const LISTADO_TEMPORADAS: LocalTemporada[] = [
   {
-    id: 1,
-    nombre: "invierno '25",
+    nombre: "temporada actual",
+    nombreApi: null,
+    añoApi: "now",
+  },
+  {
+    nombre: "invierno 2025",
     nombreApi: "winter",
     añoApi: 2025,
-    icono: "icon-[emojione-monotone--snowflake]",
   },
   {
-    id: 2,
-    nombre: "primavera '25",
+    nombre: "primavera 2025",
     nombreApi: "spring",
     añoApi: 2025,
-    icono: "icon-[emojione-monotone--cherry-blossom]",
   },
   {
-    id: 3,
-    nombre: "verano '25",
-    nombreApi: "summer",
-    añoApi: 2025,
-    icono: "icon-[emojione-monotone--sun]",
-  },
-  {
-    id: 4,
-    nombre: "otoño '25",
-    nombreApi: "fall",
-    añoApi: 2025,
-    icono: "icon-[emojione-monotone--maple-leaf]",
+    nombre: "proximas temporadas",
+    nombreApi: null,
+    añoApi: "upcoming",
   },
 ];
 
@@ -40,6 +32,7 @@ export const LISTADO_TIPOS_ANIMES: LocalTipoDeAnime[] = [
   {
     id: 1,
     nombre: "todos",
+    nombreApi: null,
   },
   {
     id: 2,
