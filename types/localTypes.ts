@@ -1,9 +1,8 @@
 export interface LocalTemporada {
   id: number;
   nombre: string;
-  nombreApi: string;
-  añoApi: number;
-  icono: string;
+  nombreApi: string | null;
+  añoApi: number | string;
 }
 
 export interface LocalMainGenero {
@@ -20,7 +19,7 @@ export interface LocalFullGenero {
 export interface LocalTipoDeAnime {
   id: number;
   nombre: string;
-  nombreApi?: string;
+  nombreApi: string | null;
 }
 export interface LocalGenero {
   id: number;
@@ -39,4 +38,8 @@ export interface LocalItemTraduccion {
 
 export interface LocalObjetoTraduccion {
   [key: string]: LocalItemTraduccion;
+}
+
+export interface SearchParams {
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
