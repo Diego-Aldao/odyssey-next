@@ -1,5 +1,4 @@
 export interface LocalTemporada {
-  id: number;
   nombre: string;
   nombreApi: string | null;
   añoApi: number | string;
