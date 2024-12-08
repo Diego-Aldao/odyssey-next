@@ -414,3 +414,16 @@ export const LISTADO_NAVEGACION_FOOTER = [
     ],
   },
 ];
+
+export const LISTADO_FILTROS_PAGES_NAVIGATION = [
+  {
+    id: 1,
+    nombre: "recientes",
+    nombreApi: null,
+  },
+  {
+    id: 2,
+    nombre: "populares",
+    nombreApi: "popular",
+  },
+];
