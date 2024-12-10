@@ -1,3 +1,4 @@
+import BackButton from "@/components/buttons/BackButton";
 import AnimeMainContainer from "@/components/containers/page-detalle/anime-main-container";
 import SectionHero from "@/components/pageDetalle/DetalleAnime/SectionHero";
 import SectionFullEpisodios from "@/components/pageDetalle/Episodios/SectionFullEpisodios";
@@ -24,8 +25,15 @@ export default async function PageEpisodios({ params }: Props) {
         año={data.year}
         estado={data.status}
         rankPopularidad={data.popularity}
+        id={`/anime/${id}`}
       />
-      <SectionFullEpisodios id={id} />
+      <div className="max-w-[1440px] w-full mx-auto lg:mt-40">
+        <SectionFullEpisodios id={id} />
+        <BackButton
+          destino={`/anime/${id}`}
+          nombre="ver la información completa"
+        />
+      </div>
     </AnimeMainContainer>
   );
 }
