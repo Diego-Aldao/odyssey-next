@@ -1,6 +1,6 @@
 import RandomAnime from "@/components/pageInicio/RandomAnime";
 import SectionPopulares from "@/components/pageInicio/SectionPopulares/SectionPopulares";
-import HeroSection from "@/components/pageInicio/HeroSection";
+import HeroSection from "@/components/pageInicio/SectionHero/HeroSection";
 import SectionTrailers from "@/components/pageInicio/SectionTrailers";
 import SectionEpisodios from "@/components/pageInicio/SectionEpisodios";
 import SectionTemporadas from "@/components/pageInicio/SectionTemporadas";
