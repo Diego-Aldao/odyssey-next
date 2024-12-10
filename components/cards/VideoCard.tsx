@@ -5,10 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import ModalVideo from "../ModalVideo";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
   id: number | string;
-  nombreAnime: string;
+  nombreAnime?: string;
   imagen: string | null;
   videoUrl: string | null;
   tipoDeVideo: string;
@@ -35,6 +36,10 @@ export default function VideoCard({
     setSelectedTrailer(selectedTrailer);
     handleToggler();
   };
+  const [ref, inView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
 
   return (
     <>
@@ -45,20 +50,30 @@ export default function VideoCard({
           handleToggler={handleToggler}
         />
       )}
-      <div className={`flex flex-col gap-2 ${customStyles}`}>
-        <Link
-          href={`/anime/${id}`}
-          className="line-clamp-1 text-xs xl:text-sm font-montserrat font-bold"
-        >
-          {nombreAnime}
-        </Link>
+      <div
+        ref={ref}
+        className={`flex flex-col gap-2 ${
+          inView
+            ? "lg:opacity-100 lg:translate-y-0"
+            : "lg:opacity-0 lg:translate-y-2"
+        } transition-transform-opacity ${customStyles}`}
+      >
+        {nombreAnime && (
+          <Link
+            href={`/anime/${id}`}
+            className="line-clamp-1 text-xs xl:text-sm font-montserrat font-bold"
+          >
+            {nombreAnime}
+          </Link>
+        )}
+
         <div
-          className="p-[2px] sm:p-1 bg-tertiary-black rounded-xl transition-colors relative hover:bg-main-color cursor-pointer"
+          className="p-[2px] bg-tertiary-black rounded-xl flex-1 transition-colors relative hover:bg-main-color cursor-pointer group"
           onClick={handleClick}
         >
-          <div className="play absolute p-2 w-fit h-fit inset-0 mx-auto my-auto rounded-full bg-main-black/50 backdrop-blur-sm flex items-center justify-center group-hover:bg-main-black transition-colors z-[2] group hover:bg-main-black">
+          <div className="play absolute p-2 w-fit h-fit inset-0 mx-auto my-auto rounded-full bg-main-black/30 backdrop-blur-sm flex items-center justify-center  transition-colors z-[2] group-hover:bg-main-black">
             <span
-              className={`icon-[game-icons--play-button] h-8 w-8 text-main-white ml-1 group-hover:text-main-color transition-colors ${customStylesButton}`}
+              className={`icon-[solar--play-broken] h-6 w-6 text-main-white  group-hover:text-main-color transition-colors ${customStylesButton}`}
             ></span>
           </div>
           <div className="imagen rounded-xl overflow-hidden after:absolute after:inset-0 after:bg-main-black/20 group-hover:after:bg-main-black/10 after:transition-colors relative">
