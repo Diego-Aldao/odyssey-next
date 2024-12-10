@@ -294,7 +294,7 @@ export const LISTADO_NAVEGACION = [
   {
     id: 2,
     nombre: "anime de temporada",
-    link: "/temporadas",
+    link: "/temporadas/now",
   },
   {
     id: 3,
