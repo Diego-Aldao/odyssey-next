@@ -1,3 +1,4 @@
+import BackButton from "@/components/buttons/BackButton";
 import AnimeMainContainer from "@/components/containers/page-detalle/anime-main-container";
 import SectionHero from "@/components/pageDetalle/DetalleAnime/SectionHero";
 import SectionReviews from "@/components/pageDetalle/DetalleAnime/SectionReviews";
@@ -24,9 +25,14 @@ export default async function PageReviews({ params }: Props) {
         año={data.year}
         estado={data.status}
         rankPopularidad={data.popularity}
+        id={id}
       />
       <div className="contenedor max-w-[1440px] w-full mx-auto lg:mt-40">
         <SectionReviews id={id} full={true} />
+        <BackButton
+          destino={`/anime/${id}`}
+          nombre="ver la información completa"
+        />
       </div>
     </AnimeMainContainer>
   );
