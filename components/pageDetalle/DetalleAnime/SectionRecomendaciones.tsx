@@ -28,6 +28,7 @@ export default async function SectionRecomendaciones({ id }: Props) {
             imagen={recomendacion.entry.images.webp.image_url}
             id={recomendacion.entry.mal_id}
             customStyles="flex-1"
+            destino={`/anime/${recomendacion.entry.mal_id}`}
           >
             <span className="text-xs font-medium line-clamp-1">
               {recomendacion.votes >= 2

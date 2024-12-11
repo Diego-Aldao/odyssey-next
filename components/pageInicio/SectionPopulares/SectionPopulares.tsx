@@ -37,6 +37,7 @@ export default function SectionPopulares() {
                 id={anime.mal_id}
                 key={anime.mal_id}
                 imagen={anime.images.webp.image_url}
+                destino={`/anime/${anime.mal_id}`}
               >
                 <InfoScore titulo={anime.title} score={anime.score} />
               </MainCard>
