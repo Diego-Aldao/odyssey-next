@@ -4,6 +4,7 @@ import { Reactions, Tag } from "@/types/fetchTypes";
 import { getTopReactions } from "@/utils/getTopReactions";
 import Image from "next/image";
 import React from "react";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
   imagen: string;
@@ -41,14 +42,31 @@ export default function ReviewCard({
   full,
 }: Props) {
   const { toggler, handleToggler } = useToggler();
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
   return (
-    <div className="review grid xl:grid-cols-[50px,1fr] gap-2 h-fit transition-all">
-      <div className="usuario hidden xl:block w-full h-fit rounded-md border border-secondary-white overflow-hidden">
+    <div
+      ref={ref}
+      className={`review grid md:grid-cols-[50px,1fr] gap-2 h-fit transition-opacity ${
+        inView ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <div
+        className={`usuario hidden md:block w-full h-fit rounded-md border border-secondary-white overflow-hidden ${
+          inView ? "translate-x-0" : "-translate-x-2"
+        } transition-transform`}
+      >
         <Image src={imagen} alt="" width={0} height={0} sizes="100vw" />
       </div>
       <div className="info flex flex-col gap-2">
         <header className="flex gap-2">
-          <div className="usuario xl:hidden w-[50px] h-fit rounded-md border border-secondary-white overflow-hidden">
+          <div
+            className={`usuario md:hidden w-[50px] h-fit rounded-md border border-secondary-white overflow-hidden ${
+              inView ? "translate-x-0" : "-translate-x-2"
+            } transition-transform`}
+          >
             <Image src={imagen} alt="" width={0} height={0} sizes="100vw" />
           </div>
           <div className="info-header flex flex-col gap-2">
@@ -68,7 +86,7 @@ export default function ReviewCard({
           </div>
         </header>
         <p
-          className={`text-sm text-secondary-white whitespace-pre-line h-fit transition-all  ${
+          className={`text-sm text-secondary-white whitespace-pre-line h-fit transition-all max-w-5xl  ${
             toggler ? "line-clamp-none pb-4" : "line-clamp-6 pb-0"
           }`}
         >

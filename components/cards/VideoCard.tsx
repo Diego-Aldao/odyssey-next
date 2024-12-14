@@ -1,11 +1,12 @@
 "use client";
 import useToggler from "@/hooks/useToggler";
 import { SelectedTrailer } from "@/types/localTypes";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ModalVideo from "../ModalVideo";
 import { useInView } from "react-intersection-observer";
+import errorImage from "@/assets/errorImageVideoCard.webp";
 
 interface Props {
   id: number | string;
@@ -15,6 +16,7 @@ interface Props {
   tipoDeVideo: string;
   customStyles?: string;
   customStylesButton?: string;
+  customStylesImage?: string;
 }
 
 export default function VideoCard({
@@ -25,6 +27,7 @@ export default function VideoCard({
   videoUrl,
   customStyles,
   customStylesButton,
+  customStylesImage,
 }: Props) {
   const [selectedTrailer, setSelectedTrailer] = useState<SelectedTrailer>();
   const { toggler, handleToggler } = useToggler();
@@ -40,6 +43,16 @@ export default function VideoCard({
     threshold: 0.2,
     triggerOnce: true,
   });
+
+  const [currentSrc, setCurrentSrc] = useState<string | StaticImageData>(
+    imagen || errorImage
+  );
+
+  useEffect(() => {
+    if (currentSrc !== imagen) {
+      setCurrentSrc(imagen || "");
+    }
+  }, [imagen]);
 
   return (
     <>
@@ -68,7 +81,7 @@ export default function VideoCard({
         )}
 
         <div
-          className="p-[2px] bg-tertiary-black rounded-xl flex-1 transition-colors relative hover:bg-main-color cursor-pointer group"
+          className={`p-[2px] bg-tertiary-black rounded-xl transition-colors relative hover:bg-main-color cursor-pointer group ${customStylesImage}`}
           onClick={handleClick}
         >
           <div className="play absolute p-2 w-fit h-fit inset-0 mx-auto my-auto rounded-full bg-main-black/30 backdrop-blur-sm flex items-center justify-center  transition-colors z-[2] group-hover:bg-main-black">
@@ -76,13 +89,19 @@ export default function VideoCard({
               className={`icon-[solar--play-broken] h-6 w-6 text-main-white  group-hover:text-main-color transition-colors ${customStylesButton}`}
             ></span>
           </div>
-          <div className="imagen rounded-xl overflow-hidden after:absolute after:inset-0 after:bg-main-black/20 group-hover:after:bg-main-black/10 after:transition-colors relative">
+          <div
+            className={`imagen rounded-xl h-full w-full overflow-hidden after:absolute after:inset-0 after:bg-main-black/20 group-hover:after:bg-main-black/10 after:transition-colors relative`}
+          >
             <Image
-              src={imagen || ""}
+              src={currentSrc}
               alt=""
               width={0}
               height={0}
               sizes="100vw"
+              className={customStylesImage}
+              onError={() => {
+                setCurrentSrc(errorImage);
+              }}
             />
           </div>
         </div>
