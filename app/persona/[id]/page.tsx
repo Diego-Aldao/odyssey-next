@@ -29,7 +29,7 @@ export default async function PagePersona({ params }: Props) {
           nombreDePila={data.name}
           apellido={data.family_name}
           nacimiento={data.birthday}
-          sitioWeb={data.website_url || ""}
+          sitioWeb={data.website_url}
           favoritos={data.favorites}
         />
         <section className="flex flex-col gap-12">
