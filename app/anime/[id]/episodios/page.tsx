@@ -1,39 +1,31 @@
 import BackButton from "@/components/buttons/BackButton";
-import AnimeMainContainer from "@/components/containers/page-detalle/anime-main-container";
-import SectionHero from "@/components/pageDetalle/DetalleAnime/SectionHero";
-import SectionFullEpisodios from "@/components/pageDetalle/Episodios/SectionFullEpisodios";
-import { BASE_URL_ANIME } from "@/constants";
-import fetchData from "@/services/fetchData";
-import { FetchAnime } from "@/types/fetchTypes";
-import React from "react";
+import MainSection from "@/components/containers/page-inicio/main-section";
+import ListadoEpisodiosAnimeID from "@/components/pageDetalle/EpisodiosAnimeID/ListadoEpisodiosAnimeID";
+import SkewCardSkeleton from "@/components/skeletons/cards/SkewCardSkeleton";
+import React, { Suspense } from "react";
 
 interface Props {
   params: { [key: string]: string };
 }
 
-export default async function PageEpisodios({ params }: Props) {
+export default function PageEpisodios({ params }: Props) {
   const { id } = params;
-  const { data } = await fetchData<FetchAnime>(`${BASE_URL_ANIME}/${id}/full`);
   return (
-    <AnimeMainContainer>
-      <SectionHero
-        imagen={data.images.webp.large_image_url}
-        titulo={data.title}
-        sinopsis={data.synopsis}
-        score={data.score}
-        generos={data.genres}
-        año={data.year}
-        estado={data.status}
-        rankPopularidad={data.popularity}
-        id={`/anime/${id}`}
+    <div className="max-w-[1440px] w-full mx-auto lg:mt-40">
+      <MainSection
+        tituloSeccion="episodios"
+        customStyles="row-start-2 md:row-start-3 xl:col-start-2 xl:row-start-3 xl:!text-lg"
+      >
+        <div className="grid gap-4 px-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <Suspense fallback={<SkewCardSkeleton cantidad={12} />}>
+            <ListadoEpisodiosAnimeID id={id} />
+          </Suspense>
+        </div>
+      </MainSection>
+      <BackButton
+        destino={`/anime/${id}`}
+        nombre="ver la información completa"
       />
-      <div className="max-w-[1440px] w-full mx-auto lg:mt-40">
-        <SectionFullEpisodios id={id} />
-        <BackButton
-          destino={`/anime/${id}`}
-          nombre="ver la información completa"
-        />
-      </div>
-    </AnimeMainContainer>
+    </div>
   );
 }
