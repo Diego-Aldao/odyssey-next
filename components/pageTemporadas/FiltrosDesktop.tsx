@@ -25,9 +25,9 @@ export default function FiltrosDesktop({ currentTemporada, tipoAnime }: Props) {
 
   const handleTipo = (tipo: LocalTipoDeAnime) => {
     if (tipo.nombreApi === null) {
-      router.push(`${pathname}`);
+      router.push(`${pathname}`, { scroll: false });
     } else {
-      router.push(`${pathname}?filter=${tipo.nombreApi}`);
+      router.push(`${pathname}?filter=${tipo.nombreApi}`, { scroll: false });
     }
   };
   return (
