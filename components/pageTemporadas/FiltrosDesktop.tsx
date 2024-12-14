@@ -31,8 +31,8 @@ export default function FiltrosDesktop({ currentTemporada, tipoAnime }: Props) {
     }
   };
   return (
-    <div className="flex flex-col gap-4">
-      <ul className="hidden md:flex gap-2 items-center">
+    <div className="hidden md:flex flex-col gap-4">
+      <ul className="flex gap-2 items-center">
         <li className="flex gap-2 items-center flex-wrap">
           {LISTADO_TEMPORADAS.map((temporada, i) => (
             <MainButton
@@ -42,7 +42,10 @@ export default function FiltrosDesktop({ currentTemporada, tipoAnime }: Props) {
                 handleTemporada(temporada);
               }}
               customStyles={
-                currentTemporada[0] === temporada.añoApi
+                (currentTemporada[1] === temporada.nombreApi &&
+                  currentTemporada[0] == temporada.añoApi) ||
+                (currentTemporada[0] == temporada.añoApi &&
+                  temporada.nombreApi === null)
                   ? "bg-main-color text-main-black"
                   : "bg-secondary-black text-main-white"
               }
@@ -56,7 +59,7 @@ export default function FiltrosDesktop({ currentTemporada, tipoAnime }: Props) {
 
         <SelectCustomTemporada />
       </ul>
-      <ul className="hidden md:flex gap-2 items-center">
+      <ul className="flex gap-2 items-center">
         {LISTADO_TIPOS_ANIMES.map((tipo) => (
           <li key={tipo.id}>
             <MainButton
