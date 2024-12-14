@@ -5,17 +5,21 @@ import MainCard from "../../cards/MainCard/MainCard";
 import { FetchPopulares } from "@/types/fetchTypes";
 import { BASE_URL_POPULARES } from "@/constants";
 import useGeneros from "@/hooks/useGeneros";
-import SectionSkeleton from "../../skeletons/SectionSkeleton";
 import InfoScore from "../../cards/MainCard/InfoScore";
-import FetchDataClient from "@/services/FetchDataClient";
 import ListadoGeneros from "./ListadoGeneros";
 import MainSection from "@/components/containers/page-inicio/main-section";
+import useSWR from "swr";
+import fetchData from "@/services/fetchData";
+import MainCardSkeleton from "@/components/skeletons/cards/MainCardSkeleton";
 
 export default function SectionPopulares() {
   const { currentGenero, handleGenero } = useGeneros();
-  const { dataFetch, loading } = FetchDataClient<FetchPopulares>(
-    `${BASE_URL_POPULARES}${currentGenero ? `&genres=${currentGenero.id}` : ""}`
-  );
+
+  const url = `${BASE_URL_POPULARES}${
+    currentGenero ? `&genres=${currentGenero.id}` : ""
+  }`;
+
+  const { data, isLoading } = useSWR(url, fetchData<FetchPopulares>);
 
   return (
     <MainSection
@@ -27,23 +31,25 @@ export default function SectionPopulares() {
           handleGenero={handleGenero}
           currentGenero={currentGenero}
         />
-        {loading && <SectionSkeleton />}
-        {dataFetch && !loading && (
-          <CardsBaseGrid customStyles="xl:grid-cols-4 2xl:grid-cols-6">
-            {dataFetch.data.map((anime) => (
-              <MainCard
-                nombre={anime.title}
-                tipo="anime"
-                id={anime.mal_id}
-                key={anime.mal_id}
-                imagen={anime.images.webp.image_url}
-                destino={`/anime/${anime.mal_id}`}
-              >
-                <InfoScore titulo={anime.title} score={anime.score} />
-              </MainCard>
-            ))}
-          </CardsBaseGrid>
-        )}
+        <CardsBaseGrid customStyles="xl:grid-cols-4 2xl:grid-cols-6">
+          {isLoading && <MainCardSkeleton cantidad={12} />}
+          {data && (
+            <>
+              {data.data.map((anime) => (
+                <MainCard
+                  nombre={anime.title}
+                  tipo="anime"
+                  id={anime.mal_id}
+                  key={anime.mal_id}
+                  imagen={anime.images.webp.image_url}
+                  destino={`/anime/${anime.mal_id}`}
+                >
+                  <InfoScore titulo={anime.title} score={anime.score} />
+                </MainCard>
+              ))}
+            </>
+          )}
+        </CardsBaseGrid>
       </div>
     </MainSection>
   );
