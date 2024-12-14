@@ -43,28 +43,31 @@ export default function SectionMainInfo({ nombre, about }: Props) {
 
   return (
     <div className="main-info flex flex-col gap-8">
-      <h1 className="font-montserrat tracking-tighter pl-1 [text-shadow:_2px_2px_#000] uppercase line-clamp-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-black italic relative z-[2] w-full text-center md:text-start">
+      <h1 className="font-montserrat tracking-tighter pl-1 [text-shadow:_2px_2px_#000] uppercase line-clamp-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black italic relative z-[2] w-full text-center md:text-start">
         {nombre}
       </h1>
-      <div
-        className={`contenedor-pares grid grid-cols-2 sm:flex sm:flex-wrap md:grid lg:grid-cols-2 gap-2 xl:grid-cols-3`}
-      >
-        {Object.entries(objetoParseado)
-          .slice(0, 6)
-          .map((linea, i) => (
-            <div
-              className="pares flex flex-col items-center md:items-start flex-1 sm:min-w-[150px]"
-              key={i}
-            >
-              <span className="capitalize text-xs xl:text-sm text-secondary-white">
-                {CHARACTER_ABOUT_TRANSLATE[linea[0]] || linea[0]}
-              </span>
-              <span className="text-center xl:text-2xl xl:font-semibold line-clamp-2 font-montserrat font-medium lg:text-left">
-                {linea[1]}
-              </span>
-            </div>
-          ))}
-      </div>
+      {Object.keys(objetoParseado).length >= 1 && (
+        <div
+          className={`contenedor-pares grid grid-cols-2 sm:flex sm:flex-wrap md:grid lg:grid-cols-2 gap-2 xl:grid-cols-3`}
+        >
+          {Object.entries(objetoParseado)
+            .slice(0, 6)
+            .map((linea, i) => (
+              <div
+                className="pares flex flex-col items-center md:items-start flex-1 sm:min-w-[150px]"
+                key={i}
+              >
+                <span className="capitalize text-xs xl:text-sm text-secondary-white">
+                  {CHARACTER_ABOUT_TRANSLATE[linea[0]] || linea[0]}
+                </span>
+                <span className="text-center xl:text-2xl xl:font-semibold line-clamp-2 font-montserrat font-medium lg:text-left">
+                  {linea[1]}
+                </span>
+              </div>
+            ))}
+        </div>
+      )}
+
       {about && (
         <div className="sinopsis flex flex-col gap-2 lg:gap-4">
           <h2 className="uppercase text-xl md:text-2xl lg:text-3xl xl:text-4xl font-montserrat font-black italic ">

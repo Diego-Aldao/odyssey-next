@@ -27,11 +27,10 @@ export default function SectionVideos({ promo, musicVideos }: Props) {
             key={`${item.trailer.youtube_id}${i}`}
             id={item.trailer.youtube_id}
             imagen={item.trailer.images.medium_image_url}
-            nombreAnime={""}
             videoUrl={item.trailer.embed_url}
             tipoDeVideo={item.title}
-            customStyles="md:max-w-[180px] md:min-w-[180px] lg:max-w-[230px] lg:min-w-[230px] w-full"
-            customStylesButton="md:h-4 md:w-4 lg:w-6 lg:h-6"
+            customStyles="md:max-w-[180px] md:h-[127px] lg:h-[155px] xl:h-[159px] md:min-w-[180px] lg:max-w-[230px] lg:min-w-[230px] w-full"
+            customStylesImage="h-[99px] lg:h-[127px]"
           />
         ))}
         {mainExtra.map((item, i) => (
@@ -43,7 +42,7 @@ export default function SectionVideos({ promo, musicVideos }: Props) {
             videoUrl={item.video.embed_url}
             tipoDeVideo={item.title}
             customStyles="md:max-w-[180px] md:min-w-[180px] lg:max-w-[230px] lg:min-w-[230px] w-full"
-            customStylesButton="md:h-4 md:w-4 lg:w-6 lg:h-6"
+            customStylesImage="h-[99px] lg:h-[127px]"
           />
         ))}
       </div>

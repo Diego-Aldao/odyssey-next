@@ -3,6 +3,7 @@ import { LISTADO_TEMPORADAS, LISTADO_TIPOS_ANIMES } from "@/constants";
 import { Select, SelectItem } from "@nextui-org/select";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import SelectCustomTemporada from "./SelectCustomTemporada";
 
 export default function FiltrosMobile() {
   const router = useRouter();
@@ -27,14 +28,16 @@ export default function FiltrosMobile() {
     )[0];
     if (!currentFiltro) return;
     if (currentFiltro.nombreApi === null) {
-      router.push(`${pathname}`);
+      router.push(`${pathname}`, { scroll: false });
     } else {
-      router.push(`${pathname}?filter=${currentFiltro.nombreApi}`);
+      router.push(`${pathname}?filter=${currentFiltro.nombreApi}`, {
+        scroll: false,
+      });
     }
   };
 
   return (
-    <div className="filtros-mobile flex flex-wrap items-center justify-between gap-1 md:hidden ">
+    <div className="filtros-mobile flex flex-wrap items-center justify-between gap-1 gap-y-2 md:hidden ">
       <Select
         label="Temporadas"
         classNames={{
@@ -68,6 +71,7 @@ export default function FiltrosMobile() {
         }}
         popoverProps={{
           classNames: {
+            base: "min-w-[120px]",
             content: "capitalize px-0",
           },
         }}
@@ -76,6 +80,9 @@ export default function FiltrosMobile() {
           <SelectItem key={tipo.nombre}>{tipo.nombre}</SelectItem>
         ))}
       </Select>
+      <div className="contenedor-custom w-full flex items-center justify-start">
+        <SelectCustomTemporada />
+      </div>
     </div>
   );
 }

@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useInView } from "react-intersection-observer";
+import imagenError from "@/assets/errorImageVideoCard.webp";
 
 interface Props {
   imagen: string;
@@ -29,13 +32,26 @@ export function SkewCardDouble({
   destinoTop,
   destinoBottom,
 }: PropsCardDouble) {
+  const [ref, inView] = useInView({
+    threshold: 0.4,
+    triggerOnce: true,
+  });
   return (
-    <div className="-skew-x-[10deg] h-20 xl:h-24  relative w-full flex gap-2  overflow-hidden rounded-md border-2 border-secondary-white/10 group justify-between">
+    <div
+      ref={ref}
+      className={`-skew-x-[10deg] h-20 xl:h-24 relative w-full flex gap-2 overflow-hidden rounded-md border-2 border-secondary-white/10 group justify-between ${
+        inView ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className="deco invisible opacity-0 group-hover:visible group-hover:opacity-100 w-0 z-[2] h-full bg-main-color group-hover:w-1 absolute top-0 left-0 transition-all"></div>
 
-      <div className="overflow-hidden h-full relative left-0 group-hover:left-1 transition-all">
+      <div
+        className={`overflow-hidden h-full relative left-0 group-hover:left-1 transition-all ${
+          inView ? "translate-x-0" : "-translate-x-4"
+        }`}
+      >
         <Image
-          src={imagenLeft}
+          src={imagenLeft || imagenError}
           alt=""
           width={0}
           height={0}
@@ -44,9 +60,13 @@ export function SkewCardDouble({
         />
       </div>
       <div className="deco invisible opacity-0 group-hover:visible group-hover:opacity-100 w-0 z-[2] h-full bg-main-color group-hover:w-1 absolute top-0 right-0 transition-all"></div>
-      <div className=" overflow-hidden h-full relative right-0 group-hover:right-1 transition-all">
+      <div
+        className={`overflow-hidden h-full relative right-0 group-hover:right-1 transition-all ${
+          inView ? "translate-x-0" : "translate-x-4"
+        }`}
+      >
         <Image
-          src={imagenRight}
+          src={imagenRight || imagenError}
           alt=""
           width={0}
           height={0}
@@ -85,16 +105,27 @@ export default function SkewCard({
   customImageStyles,
   customShadowStyles,
 }: Props) {
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
   return (
     <Link
       href={destino}
-      className="-skew-x-[10deg] h-20 xl:h-24  relative w-full flex gap-2  overflow-hidden rounded-md border-2 border-secondary-white/10 group bg-main-black"
+      ref={ref}
+      className={`-skew-x-[10deg] h-20 xl:h-24 relative w-full flex gap-2 overflow-hidden rounded-md border-2 border-secondary-white/10 group bg-main-black ${
+        inView ? "opacity-100" : "opacity-0"
+      } transition-opacity`}
     >
       <div className="deco invisible opacity-0 group-hover:visible group-hover:opacity-100 w-0 h-full bg-main-color group-hover:w-2 absolute top-0 left-0 transition-all"></div>
 
-      <span className="imagen h-20 xl:h-24  w-[120px] xl:w-[170px] overflow-hidden absolute top-0 left-0  group-hover:left-2 transition-all">
+      <span
+        className={`imagen h-20 xl:h-24 w-[120px] xl:w-[170px] overflow-hidden absolute top-0 left-0  group-hover:left-2 transition-all ${
+          inView ? "translate-x-0" : "-translate-x-4"
+        }`}
+      >
         <Image
-          src={imagen}
+          src={imagen || imagenError}
           alt=""
           width={0}
           height={0}

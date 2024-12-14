@@ -48,7 +48,7 @@ export default function MainSection({
               href={destino}
               className={`uppercase md:text-xl lg:text-2xl font-bold tracking-tight italic ${
                 asideSection ? "xl:text-xl" : "xl:text-3xl"
-              }`}
+              } hover:translate-x-2 hover:text-main-color transition-transform-colors !duration-100`}
             >
               {nombreDestino}
             </Link>

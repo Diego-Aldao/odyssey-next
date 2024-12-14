@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 
-export default function useInfiniteData<T>(data: T[], page: number) {
+export default function useInfiniteData<T>(
+  data: T[] | undefined,
+  page: number | undefined
+) {
   const [currentData, setCurrentData] = useState<T[] | null>(null);
 
   useEffect(() => {
-    if (!data) return;
+    if (!data || !page) return;
     const newData = currentData && page > 1 ? [...currentData, ...data] : data;
     setCurrentData(newData);
   }, [data, page]);

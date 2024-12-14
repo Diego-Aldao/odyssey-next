@@ -1,5 +1,29 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/temporadas",
+        destination: "/temporadas/now",
+        permanent: true,
+      },
+      {
+        source: "/anime",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/personaje",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/persona",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

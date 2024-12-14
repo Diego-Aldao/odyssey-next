@@ -12,7 +12,12 @@
 }
 
 .background {
-  background-image: url("../assets/mainBackground.webp");
+  background-image: url("../assets/mainBackgroundSM.webp");
+}
+@media (min-width: 768px) {
+  .background {
+    background-image: url("../assets/mainBackground.webp");
+  }
 }
 
 h1,
