@@ -7,11 +7,11 @@ import MainCard from "../cards/MainCard/MainCard";
 import InfoEpisodios from "../cards/MainCard/InfoEpisodios";
 
 interface Props {
-  tipo: string;
+  tipo: string | string[] | undefined;
 }
 
 export default async function ListadoEpisodios({ tipo }: Props) {
-  const urlTipo = tipo.includes("popular") ? `/${tipo}` : "";
+  const urlTipo = tipo && tipo.includes("popular") ? `/${[tipo[0]]}` : "";
   const { data } = await fetchData<FetchEpisodiosRecientes>(
     `${BASE_URL_EPISODES}${urlTipo}`
   );
@@ -26,6 +26,7 @@ export default async function ListadoEpisodios({ tipo }: Props) {
           key={anime.entry.mal_id}
           imagen={anime.entry.images?.webp.image_url || ""}
           destino={`/anime/${anime.entry.mal_id}/episodios`}
+          customStyles="2xl:!h-[310px]"
         >
           <InfoEpisodios anime={anime} />
         </MainCard>
