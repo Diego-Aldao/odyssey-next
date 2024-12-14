@@ -11,6 +11,7 @@ import { searchParamsToString } from "@/utils/searchParamsToString";
 import useSWR from "swr";
 import fetchData from "@/services/fetchData";
 import MainCardSkeleton from "../skeletons/cards/MainCardSkeleton";
+import NoData from "../errors/NoData";
 
 interface Props {
   currentTemporada: string[];
@@ -37,7 +38,7 @@ export default function MainContentPageTemporadas({
   return (
     <>
       {isLoading && !currentData && <MainCardSkeleton cantidad={12} />}
-      {currentData && (
+      {currentData && currentData.length >= 1 && (
         <>
           {currentData.map((anime, i) => (
             <MainCard
@@ -63,6 +64,7 @@ export default function MainContentPageTemporadas({
           {data?.pagination.has_next_page && <InfiniteScroll newUrl={newUrl} />}
         </>
       )}
+      {currentData && currentData.length === 0 && <NoData />}
     </>
   );
 }
