@@ -20,7 +20,7 @@ export default function PageEpisodios({ params }: Props) {
         <PagesNavigationFiltros tipo={tipo} baseDestino="episodios" />
         <CardsBaseGrid customStyles="lg:grid-cols-5 2xl:grid-cols-6">
           <Suspense fallback={<MainCardSkeleton cantidad={12} />}>
-            <ListadoEpisodios tipo="tipo" />
+            <ListadoEpisodios tipo={tipo} />
           </Suspense>
         </CardsBaseGrid>
       </section>
