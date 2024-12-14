@@ -177,7 +177,7 @@ export default function SelectCustomTemporada() {
     propiedad: string
   ) => {
     let nuevoValor = e.target.value;
-    if (propiedad === "temporada") {
+    if (nuevoValor && propiedad === "temporada") {
       const temporada = listadoTemporadas.filter(
         (temporada) => temporada.nombre === e.target.value
       )[0];
@@ -201,7 +201,7 @@ export default function SelectCustomTemporada() {
     !selectedTemporada.año || !selectedTemporada.temporada;
 
   return (
-    <li className="gap-1 lg:gap-2 items-center text-xs ml-auto bg-secondary-black min-w-[280px] px-2 rounded-xl py-2 hidden md:flex">
+    <li className="gap-1 lg:gap-2 items-center text-xs md:ml-auto bg-secondary-black w-fit px-2 rounded-xl py-2 flex">
       <Select
         aria-label="select temporada"
         classNames={{
@@ -222,6 +222,11 @@ export default function SelectCustomTemporada() {
         classNames={{
           trigger: "min-h-8 h-8 max-h-8 px-2 bg-main-black",
         }}
+        popoverProps={{
+          classNames: {
+            base: "min-w-[100px]",
+          },
+        }}
         aria-label="select año"
         className="min-w-[80px] lg:min-w-[100px]"
         placeholder="Año"
@@ -234,14 +239,14 @@ export default function SelectCustomTemporada() {
         ))}
       </Select>
       <button
-        className="flex items-center px-1 gap-2 group disabled:cursor-not-allowed"
+        className="flex items-center px-1 gap-2 group disabled:text-tertiary-black enabled:text-main-white disabled:cursor-not-allowed"
         onClick={handleClick}
         disabled={isButtonDisabled}
       >
-        <span className="uppercase text-xs font-semibold hidden lg:inline-block group-hover:text-main-color transition-colors group-disabled:text-tertiary-black group-enabled:text-main-white">
+        <span className="uppercase text-xs font-semibold hidden sm:inline-block md:hidden lg:inline-block text-inherit  transition-colors group-enabled:group-hover:text-main-color">
           buscar
         </span>
-        <span className="icon-[solar--map-arrow-right-broken] group-hover:text-main-color group-disabled:text-tertiary-black group-enabled:text-main-white transition-colors"></span>
+        <span className="icon-[solar--map-arrow-right-broken] text-inherit transition-colors group-enabled:group-hover:text-main-color"></span>
       </button>
     </li>
   );
