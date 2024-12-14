@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Props {
-  page: number;
+  page: number | undefined;
   searchParams?: SearchParams;
 }
 
@@ -14,6 +14,7 @@ export default function useNewUrl({ page, searchParams }: Props) {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (!page) return;
     let newStringParams;
     let newUrl;
     const newPage = page + 1;
