@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useInView } from "react-intersection-observer";
+import errorImage from "@/assets/errorImageMainCard.webp";
 
 interface Props {
   destino: string;
@@ -15,14 +18,21 @@ export default function SearchCard({
   titulo,
   children,
 }: Props) {
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
   return (
     <Link
       href={destino}
-      className="card-search rounded-xl border-main-white/20 border p-2 flex gap-2 max-w-[450px] w-full hover:border-main-white/40 transition-colors bg-main-black hover:bg-secondary-black"
+      ref={ref}
+      className={`card-search rounded-xl border-main-white/20 border p-2 flex gap-2 max-w-[450px] w-full hover:border-main-white/40 bg-main-black hover:bg-secondary-black transition-transform-colors-opacity ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      }`}
     >
       <div className="imagen rounded-xl w-[100px] h-[135px] border-secondary-black border-2 overflow-hidden">
         <Image
-          src={imagen}
+          src={imagen || errorImage}
           alt=""
           width={0}
           height={0}
