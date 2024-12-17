@@ -20,7 +20,10 @@ export default function Busqueda({ searchParams, params }: Props) {
             titulo={`resultados de '${q}' en ${categoria[0]}`}
             customStyles="md:max-w-[700px] lg:max-w-[800px] xl:!max-w-[1100px] lg:line-clamp-2  sm:!text-4xl  md:!text-5xl lg:!text-6xl xl:!text-7xl"
           />
-          <SearchBar initialType={categoria[0]} />
+          <SearchBar
+            initialType={categoria[0]}
+            customStyles="max-w-[450px] mx-auto md:max-w-[650px] xl:max-w-[800px]"
+          />
           <ListadoResultados query={q} categoria={categoria[0]} page={page} />
         </>
       )}
