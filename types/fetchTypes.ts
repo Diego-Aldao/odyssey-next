@@ -608,3 +608,88 @@ export type Doblaje = {
   anime: MangaClass;
   character: Character;
 };
+
+//SEARCH TYPES
+export type FetchSearchCharacters = {
+  pagination: PaginationComplete;
+  data: SearchPersonaje[];
+};
+
+export type SearchPersonaje = {
+  mal_id: number;
+  url: string;
+  images: ImagesSearch;
+  name: string;
+  name_kanji: null | string;
+  nicknames: string[];
+  favorites: number;
+  about: null | string;
+};
+
+export type ImagesSearch = {
+  jpg: Jpg;
+  webp: Webp;
+};
+
+export type FetchSearchAnime = {
+  pagination: PaginationComplete;
+  data: SearchAnime[];
+};
+
+export type SearchAnime = {
+  mal_id: number;
+  url: string;
+  images: { [key: string]: Image };
+  trailer: Trailer;
+  approved: boolean;
+  titles: Title[];
+  title: string;
+  title_english: null | string;
+  title_japanese: string;
+  title_synonyms: string[];
+  type: string;
+  source: string;
+  episodes: number | null;
+  status: string;
+  airing: boolean;
+  aired: Aired;
+  duration: string;
+  rating: string | null;
+  score: number | null;
+  scored_by: number | null;
+  rank: number | null;
+  popularity: number;
+  members: number;
+  favorites: number;
+  synopsis: string;
+  background: string;
+  season: string | null;
+  year: number | null;
+  broadcast: Broadcast;
+  producers: Demographic[];
+  licensors: Demographic[];
+  studios: Demographic[];
+  genres: Demographic[];
+  explicit_genres: [];
+  themes: Demographic[];
+  demographics: Demographic[];
+};
+
+export type FetchSearchPeople = {
+  pagination: PaginationComplete;
+  data: SearchPeople[];
+};
+
+export type SearchPeople = {
+  mal_id: number;
+  url: string;
+  website_url: null | string;
+  images: Images;
+  name: string;
+  given_name: null | string;
+  family_name: null | string;
+  alternate_names: string[];
+  birthday: Date | null;
+  favorites: number;
+  about: null | string;
+};
