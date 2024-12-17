@@ -1,6 +1,8 @@
 import {
+  LocalCategorias,
   LocalFullGenero,
   LocalMainGenero,
+  LocalObjetoTraduccion,
   LocalTemporada,
   LocalTipoDeAnime,
 } from "./types/localTypes";
@@ -256,6 +258,35 @@ export const LISTADO_ALL_GENEROS: LocalFullGenero[] = [
     cantidad: 2042,
   },
 ];
+
+export const LISTADO_ESTADOS_ANIME: LocalObjetoTraduccion = {
+  "finished airing": {
+    nombre: "finalizado",
+    color: "bg-red-500",
+  },
+  "currently airing": {
+    nombre: "en emisión",
+    color: "bg-green-500",
+  },
+  "not yet aired": {
+    nombre: "sin estrenar",
+    color: "bg-secondary-white",
+  },
+};
+
+export const LISTADO_CATEGORIAS_BUSQUEDA: LocalCategorias = {
+  anime: {
+    nombreApi: "anime",
+  },
+  personajes: {
+    nombreApi: "characters",
+  },
+  personas: {
+    nombreApi: "people",
+  },
+};
+
+export const BASE_URL: string = "https://api.jikan.moe/v4";
 
 export const BASE_URL_POPULARES: string =
   "https://api.jikan.moe/v4/anime?type=tv&order_by=popularity&limit=12";

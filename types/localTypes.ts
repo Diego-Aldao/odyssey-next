@@ -42,3 +42,11 @@ export interface LocalObjetoTraduccion {
 export interface SearchParams {
   searchParams?: { [key: string]: string | string[] | undefined };
 }
+
+export interface LocalItemCategoria {
+  nombreApi: string;
+}
+
+export interface LocalCategorias {
+  [key: string]: LocalItemCategoria;
+}
