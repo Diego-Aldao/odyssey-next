@@ -277,12 +277,15 @@ export const LISTADO_ESTADOS_ANIME: LocalObjetoTraduccion = {
 export const LISTADO_CATEGORIAS_BUSQUEDA: LocalCategorias = {
   anime: {
     nombreApi: "anime",
+    nombreLocal: "anime",
   },
   personajes: {
     nombreApi: "characters",
+    nombreLocal: "personaje",
   },
   personas: {
     nombreApi: "people",
+    nombreLocal: "persona",
   },
 };
 
