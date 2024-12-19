@@ -15,6 +15,7 @@ export default function SectionHero({ imagen }: Props) {
         height={0}
         sizes="100vw"
         className="scale-105"
+        priority={true}
       />
     </section>
   );
