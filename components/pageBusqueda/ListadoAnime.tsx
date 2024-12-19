@@ -17,14 +17,25 @@ interface Props {
   categoria: string;
   page: string;
   url: string;
+  genero: string;
 }
 
-export default function ListadoAnime({ url, query, categoria, page }: Props) {
+export default function ListadoAnime({
+  url,
+  query,
+  categoria,
+  page,
+  genero,
+}: Props) {
   const { data, isLoading } = useSWR(url, fetchData<FetchSearchAnime>);
   const { currentData } = useInfiniteData<SearchAnime>(
     data?.data,
     Number(page) ? Number(page) : 1
   );
+  const nuevaUrlBusqueda = `/busqueda/${categoria}?q=${query}`;
+  const nuevaUrlGeneros = `/busqueda/anime?genres=${genero}`;
+
+  const nuevaUrl = genero ? nuevaUrlGeneros : nuevaUrlBusqueda;
 
   return (
     <SearchGridContainer>
@@ -79,9 +90,7 @@ export default function ListadoAnime({ url, query, categoria, page }: Props) {
           ))}
           {data?.pagination.has_next_page && (
             <InfiniteScroll
-              newUrl={`/busqueda/${categoria}?q=${query}&page=${
-                data.pagination.current_page + 1
-              }`}
+              newUrl={`${nuevaUrl}&page=${data.pagination.current_page + 1}`}
             />
           )}
         </>
