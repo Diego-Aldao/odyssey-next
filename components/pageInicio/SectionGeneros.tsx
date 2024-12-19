@@ -8,7 +8,7 @@ import { LISTADO_ALL_GENEROS } from "@/constants";
 export default function SectionGeneros() {
   const router = useRouter();
   const handleClick = (id: number) => {
-    router.push(`/busqueda?genres=${id}`);
+    router.push(`/busqueda/anime?genres=${id}`);
   };
 
   return (
