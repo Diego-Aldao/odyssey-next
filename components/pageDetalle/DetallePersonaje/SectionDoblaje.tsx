@@ -1,4 +1,5 @@
 import SkewCard from "@/components/cards/SkewCard";
+import NoData from "@/components/errors/NoData";
 import { VoiceActor } from "@/types/fetchTypes";
 import React from "react";
 
@@ -13,15 +14,20 @@ export default function SectionDoblaje({ voces }: Props) {
         actores de doblaje
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4 md:gap-8 px-1 xl:px-2">
-        {voces.slice(0, 12).map((voz) => (
-          <SkewCard
-            key={voz.person.mal_id}
-            imagen={voz.person.images.jpg.image_url}
-            titulo={voz.person.name}
-            subtitulo={voz.language}
-            destino={`/persona/${voz.person.mal_id}`}
-          />
-        ))}
+        {voces && voces.length >= 1 && (
+          <>
+            {voces.slice(0, 12).map((voz) => (
+              <SkewCard
+                key={voz.person.mal_id}
+                imagen={voz.person.images.jpg.image_url}
+                titulo={voz.person.name}
+                subtitulo={voz.language}
+                destino={`/persona/${voz.person.mal_id}`}
+              />
+            ))}
+          </>
+        )}
+        {voces && voces.length === 0 && <NoData />}
       </div>
     </div>
   );
