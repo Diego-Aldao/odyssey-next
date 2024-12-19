@@ -58,7 +58,14 @@ export default function ReviewCard({
           inView ? "translate-x-0" : "-translate-x-2"
         } transition-transform`}
       >
-        <Image src={imagen} alt="" width={0} height={0} sizes="100vw" />
+        <Image
+          src={imagen}
+          alt=""
+          width={0}
+          height={0}
+          sizes="100vw"
+          unoptimized
+        />
       </div>
       <div className="info flex flex-col gap-2">
         <header className="flex gap-2">
@@ -67,17 +74,24 @@ export default function ReviewCard({
               inView ? "translate-x-0" : "-translate-x-2"
             } transition-transform`}
           >
-            <Image src={imagen} alt="" width={0} height={0} sizes="100vw" />
+            <Image
+              src={imagen}
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
+              unoptimized
+            />
           </div>
           <div className="info-header flex flex-col gap-2">
             <span className="nombre-usuario text-sm lg:text-base font-montserrat font-medium">
               {usuario}
             </span>
             <ul className="tags flex flex-wrap gap-2 items-center">
-              {tags.map((reaccion) => (
+              {tags.map((reaccion, i) => (
                 <span
                   className="tag text-xs py-1 px-4 bg-secondary-black rounded-full"
-                  key={reaccion}
+                  key={`${reaccion}${i}`}
                 >
                   {reaccion}
                 </span>

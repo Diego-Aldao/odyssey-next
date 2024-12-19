@@ -57,6 +57,7 @@ export function SkewCardDouble({
           height={0}
           sizes="100vw"
           className="scale-105"
+          unoptimized
         />
       </div>
       <div className="deco invisible opacity-0 group-hover:visible group-hover:opacity-100 w-0 z-[2] h-full bg-main-color group-hover:w-1 absolute top-0 right-0 transition-all"></div>
@@ -72,6 +73,7 @@ export function SkewCardDouble({
           height={0}
           sizes="100vw"
           className="scale-105"
+          unoptimized
         />
       </div>
       <div className="info z-10 absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center gap-1">
@@ -131,6 +133,7 @@ export default function SkewCard({
           height={0}
           sizes="100vw"
           className={`scale-105 object-[50%,-30px] xl:object-[50%,-50px] ${customImageStyles}`}
+          unoptimized
         />
       </span>
 

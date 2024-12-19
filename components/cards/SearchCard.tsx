@@ -38,6 +38,7 @@ export default function SearchCard({
           height={0}
           sizes="100vw"
           className="scale-105"
+          unoptimized
         />
       </div>
       <div className="info flex flex-col gap-2 flex-1">
