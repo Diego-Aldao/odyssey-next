@@ -12,6 +12,7 @@ import useSWR from "swr";
 import fetchData from "@/services/fetchData";
 import MainCardSkeleton from "../skeletons/cards/MainCardSkeleton";
 import NoData from "../errors/NoData";
+import InfoScore from "../cards/MainCard/InfoScore";
 
 interface Props {
   currentTemporada: string[];
@@ -50,15 +51,7 @@ export default function MainContentPageTemporadas({
               destino={`/anime/${anime.mal_id}`}
               customStyles="2xl:!h-[310px]"
             >
-              <span className="line-clamp-1 text-xs sm:text-sm md:text-xs lg:text-sm font-montserrat font-semibold">
-                {anime.title}
-              </span>
-              <div className="score flex items-center gap-1">
-                <span className="font-montserrat font-bold text-xs ">
-                  {anime.score || "sin puntuar"}
-                </span>
-                <span className="icon-[solar--star-bold] h-3 w-3 xl:h-4 xl:w-4 text-main-color"></span>
-              </div>
+              <InfoScore titulo={anime.title} score={anime.score} />
             </MainCard>
           ))}
           {data?.pagination.has_next_page && <InfiniteScroll newUrl={newUrl} />}
