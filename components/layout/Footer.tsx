@@ -5,7 +5,7 @@ import { LISTADO_NAVEGACION_FOOTER } from "@/constants";
 
 export default function Footer() {
   return (
-    <footer className="w-full px-2 md:px-8 lg:px-10 relative z-[2] mt-12 pb-4">
+    <footer className="w-full px-2 md:px-8 lg:px-10 relative z-[2] mt-12 pb-4 max-w-[1903px] mx-auto">
       <div className="contenido grid grid-cols-2 md:grid-cols-4 gap-8 bg-main-black/5 backdrop-blur-sm rounded-xl sm:px-4 md:px-6 lg:px-8 px-2 pt-10 xl:grid-cols-[1fr,1fr,1fr,1fr,350px]">
         <header className="w-fit flex flex-col col-span-full">
           <Logo customStyles="!text-4xl md:!text-4xl lg:!text-5xl xl:!text-6xl" />
