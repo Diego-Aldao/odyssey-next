@@ -240,6 +240,16 @@ export type FetchAnime = {
   data: Anime;
 };
 
+export type FetchAnimePictures = {
+  data: { [key: string]: Picture }[];
+};
+
+export type Picture = {
+  image_url: string;
+  small_image_url: string;
+  large_image_url: string;
+};
+
 export type Anime = {
   mal_id: number;
   url: string;
