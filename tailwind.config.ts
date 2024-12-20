@@ -11,9 +11,30 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundSize: {
+        "size-200": "200% 200%",
+      },
+      backgroundPosition: {
+        "pos-0": "0% 0%",
+        "pos-100": "100% 100%",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        "main-black": "#202124",
+        "secondary-black": "#28292a",
+        "tertiary-black": "#3c4043",
+        "main-color": "#b5cff8",
+        "main-white": "#d3d3d3",
+        "secondary-white": "#b1b3b6",
+      },
+      fontFamily: {
+        raleway: "var(--font-raleway)",
+        montserrat: "var(--font-montserrat)",
+      },
+      transitionDuration: {
+        DEFAULT: "200ms",
+      },
+      transitionTimingFunction: {
+        DEFAULT: "cubic-bezier(0.165, 0.84, 0.44, 1)",
       },
     },
   },
