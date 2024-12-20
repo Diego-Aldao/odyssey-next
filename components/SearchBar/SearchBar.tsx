@@ -43,6 +43,8 @@ export default function SearchBar({ customStyles, initialType }: Props) {
 
   return (
     <form
+      id="formulario-search"
+      name="formulario-search"
       onSubmit={(e) => {
         handleSubmit(e);
       }}
@@ -52,7 +54,13 @@ export default function SearchBar({ customStyles, initialType }: Props) {
         currentTipo={currentTipo}
         setCurrentTipo={setCurrentTipo}
       />
+      <label className="hidden" htmlFor="search">
+        search
+      </label>
       <input
+        id="search"
+        aria-label="search"
+        name="search"
         type="search"
         value={value}
         onChange={(e) => {
