@@ -45,6 +45,7 @@ export interface SearchParams {
 
 export interface LocalItemCategoria {
   nombreApi: string;
+  nombreLocal: string;
 }
 
 export interface LocalCategorias {
