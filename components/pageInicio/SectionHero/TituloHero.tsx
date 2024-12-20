@@ -10,7 +10,7 @@ export default function TituloHero() {
   return (
     <div
       ref={ref}
-      className="left flex flex-col w-fit absolute bottom-0 left-0 z-2 sm:top-20 sm:left-10 sm:bottom-auto"
+      className="left flex flex-col w-fit absolute bottom-0 left-0 z-2 lg:top-20 sm:left-10 lg:bottom-auto"
     >
       <h1
         className={`uppercase font-black text-5xl italic tracking-tighter [text-shadow:4px_4px_#000,0px_0px_20px_#000] lg:[text-shadow:4px_4px_#000,0px_0px_40px_#000] xl:[text-shadow:4px_4px_#000,0px_0px_20px_#000] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl transition-transform-opacity ${
