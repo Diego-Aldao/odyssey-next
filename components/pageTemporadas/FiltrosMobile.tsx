@@ -56,7 +56,14 @@ export default function FiltrosMobile() {
         }}
       >
         {LISTADO_TEMPORADAS.map((temporada) => (
-          <SelectItem key={temporada.nombre}>{temporada.nombre}</SelectItem>
+          <SelectItem
+            key={temporada.nombre}
+            classNames={{
+              title: "font-montserrat text-xs",
+            }}
+          >
+            {temporada.nombre}
+          </SelectItem>
         ))}
       </Select>
       <Select
@@ -77,7 +84,14 @@ export default function FiltrosMobile() {
         }}
       >
         {LISTADO_TIPOS_ANIMES.map((tipo) => (
-          <SelectItem key={tipo.nombre}>{tipo.nombre}</SelectItem>
+          <SelectItem
+            key={tipo.nombre}
+            classNames={{
+              title: "font-montserrat text-xs",
+            }}
+          >
+            {tipo.nombre}
+          </SelectItem>
         ))}
       </Select>
       <div className="contenedor-custom w-full flex items-center justify-start">

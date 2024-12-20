@@ -262,27 +262,30 @@ export const LISTADO_ALL_GENEROS: LocalFullGenero[] = [
 export const LISTADO_ESTADOS_ANIME: LocalObjetoTraduccion = {
   "finished airing": {
     nombre: "finalizado",
-    color: "bg-red-500",
+    color: "#ef4444",
   },
   "currently airing": {
     nombre: "en emisión",
-    color: "bg-green-500",
+    color: "#22c55e",
   },
   "not yet aired": {
     nombre: "sin estrenar",
-    color: "bg-secondary-white",
+    color: "#b1b3b6",
   },
 };
 
 export const LISTADO_CATEGORIAS_BUSQUEDA: LocalCategorias = {
   anime: {
     nombreApi: "anime",
+    nombreLocal: "anime",
   },
   personajes: {
     nombreApi: "characters",
+    nombreLocal: "personaje",
   },
   personas: {
     nombreApi: "people",
+    nombreLocal: "persona",
   },
 };
 

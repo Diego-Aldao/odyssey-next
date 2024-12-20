@@ -22,7 +22,7 @@ const config: Config = {
         "main-black": "#202124",
         "secondary-black": "#28292a",
         "tertiary-black": "#3c4043",
-        "main-color": "#6ce2d3",
+        "main-color": "#b5cff8",
         "main-white": "#d3d3d3",
         "secondary-white": "#b1b3b6",
       },

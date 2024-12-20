@@ -3,11 +3,14 @@ import React from "react";
 
 interface Props {
   data: Estadistica;
+  customStyles?: string;
 }
 
-export default function Numeros({ data }: Props) {
+export default function Numeros({ data, customStyles }: Props) {
   return (
-    <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 lg:col-start-2  gap-2 lg:gap-0">
+    <ul
+      className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 lg:col-start-2 gap-2 lg:gap-0 ${customStyles}`}
+    >
       <li className="flex flex-col gap-1 lg:items-center">
         <span className="text-xs capitalize xl:text-sm text-secondary-white">
           lo completaron

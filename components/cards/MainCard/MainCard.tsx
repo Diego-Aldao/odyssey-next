@@ -43,7 +43,7 @@ export default function MainCard({
     <Link
       ref={ref}
       href={destino}
-      className={`p-[2px] bg-tertiary-black rounded-xl hover:bg-main-color group transition-transform-colors-opacity h-[62vw] sm:h-[43vw] md:h-[30vw] lg:h-[19.7vw] 2xl:h-[14vw] ${customStyles} ${
+      className={`p-[2px] bg-tertiary-black rounded-xl hover:bg-main-color group transition-transform-colors-opacity h-[62vw] sm:h-[43vw] md:h-[30vw] lg:h-[19.7vw] 2xl:h-[14vw] max-h-[263px] ${customStyles} ${
         inView
           ? "lg:opacity-100 lg:translate-y-0"
           : " lg:opacity-0 lg:translate-y-8"

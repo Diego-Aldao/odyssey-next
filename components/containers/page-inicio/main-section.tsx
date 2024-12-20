@@ -21,7 +21,7 @@ export default function MainSection({
   return (
     <section className={`w-full h-full ${customStyles}`}>
       <div
-        className={`main-container w-full text-main-white flex flex-col gap-8 lg:gap-12 relative after:absolute after:-top-[1px] after:right-0 after:w-[80%] after:h-[1px] after:bg-gradient-to-r after:via-main-color after:from-main-color after:to-main-black  ${
+        className={`main-container w-full text-main-white flex flex-col gap-8 lg:gap-12 relative after:absolute after:-top-[1px] after:right-0 after:w-[64%] sm:after:w-[75%] after:h-[1px] after:bg-gradient-to-r after:via-main-color after:from-main-color after:to-main-black after:lg:w-[90%]  ${
           !destino || !nombreDestino
             ? "pb-12 md:pb-14 lg:pb-16"
             : "before:absolute before:-bottom-[1px] before:left-0 before:w-[81%] before:h-[1px] before:bg-gradient-to-l before:via-main-color before:from-main-color before:to-main-black"

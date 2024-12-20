@@ -25,6 +25,7 @@ export default async function SectionImagenes({ url }: Props) {
             height={0}
             sizes="100vw"
             className="scale-105"
+            unoptimized
           />
         </div>
       ))}

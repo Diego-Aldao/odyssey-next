@@ -26,9 +26,9 @@ export default function ReviewCardSkeleton({ cantidad }: Props) {
               </div>
               {Array(6)
                 .fill(null)
-                .map((item) => (
+                .map((_, i) => (
                   <Skeleton
-                    key={item}
+                    key={i}
                     className="w-full h-[15px] rounded-xl max-w-5xl"
                   ></Skeleton>
                 ))}

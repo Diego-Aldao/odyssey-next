@@ -49,6 +49,7 @@ export default function RankCard({
           height={0}
           sizes="100vw"
           className={customStylesImage}
+          unoptimized
         />
       </div>
       {children}

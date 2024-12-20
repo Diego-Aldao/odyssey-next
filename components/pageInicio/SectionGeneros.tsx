@@ -8,13 +8,13 @@ import { LISTADO_ALL_GENEROS } from "@/constants";
 export default function SectionGeneros() {
   const router = useRouter();
   const handleClick = (id: number) => {
-    router.push(`/busqueda?genres=${id}`);
+    router.push(`/busqueda/anime?genres=${id}`);
   };
 
   return (
     <MainSection
       tituloSeccion="generos"
-      customStyles="xl:col-start-2 xl:row-start-1 xl:row-span-1"
+      customStyles="xl:col-start-2 xl:row-start-2 xl:row-span-1"
       asideSection={true}
     >
       <ul className="flex flex-wrap gap-2 lg:gap-4 2xl:justify-evenly">

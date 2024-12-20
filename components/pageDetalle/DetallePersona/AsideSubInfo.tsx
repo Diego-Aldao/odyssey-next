@@ -68,6 +68,7 @@ export default function AsideSubInfo({
           height={0}
           sizes="100vw"
           className="scale-105"
+          unoptimized
         />
       </div>
       <ul className="subinfo flex flex-col gap-4">

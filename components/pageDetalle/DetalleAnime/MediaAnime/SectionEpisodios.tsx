@@ -1,5 +1,6 @@
 import ListCard from "@/components/cards/ListCard";
 import MainSection from "@/components/containers/page-inicio/main-section";
+import NoData from "@/components/errors/NoData";
 import { Episode } from "@/types/fetchTypes";
 import React from "react";
 
@@ -30,13 +31,18 @@ export default function SectionEpisodios({
       <div
         className={`grid gap-4 px-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 ${customGridStyles}`}
       >
-        {mainEpisodios.map((episodio) => (
-          <ListCard
-            index={episodio.mal_id}
-            nombre={episodio.title}
-            key={episodio.mal_id}
-          />
-        ))}
+        {mainEpisodios && mainEpisodios.length >= 1 && (
+          <>
+            {mainEpisodios.map((episodio) => (
+              <ListCard
+                index={episodio.mal_id}
+                nombre={episodio.title}
+                key={episodio.mal_id}
+              />
+            ))}
+          </>
+        )}
+        {mainEpisodios && mainEpisodios.length === 0 && <NoData />}
       </div>
     </MainSection>
   );

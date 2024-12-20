@@ -1,32 +1,19 @@
-import { BASE_URL_ANIME } from "@/constants";
+import { BASE_URL_ANIME, LISTADO_ESTADOS_ANIME } from "@/constants";
 import fetchData from "@/services/fetchData";
 import { FetchAnime } from "@/types/fetchTypes";
-import { LocalObjetoTraduccion } from "@/types/localTypes";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ImagesDetalle from "./ImagesDetalle";
 
 interface Props {
   id: string;
 }
 
-const estados: LocalObjetoTraduccion = {
-  "Finished Airing": {
-    nombre: "finalizado",
-    color: "bg-red-500",
-  },
-  "Currently Airing": {
-    nombre: "en emisión",
-    color: "bg-green-500",
-  },
-  "Not Yet Aired": {
-    nombre: "finalizado",
-    color: "bg-secondary-white",
-  },
-};
-
 export default async function SectionHero({ id }: Props) {
   const { data } = await fetchData<FetchAnime>(`${BASE_URL_ANIME}/${id}/full`);
+
+  const color = LISTADO_ESTADOS_ANIME[data.status.toLowerCase()].color;
 
   return (
     <div className="hero h-[600px] md:h-[550px] xl:h-[650px] w-full flex flex-col items-start justify-end  max-w-[1440px] mx-auto lg:relative">
@@ -38,53 +25,43 @@ export default async function SectionHero({ id }: Props) {
           height={0}
           sizes="100vw"
           className="object-[50%,0px] xl:object-[50%,10%] 2xl:object-[50%,20%]"
+          unoptimized
         />
       </div>
-      <div className="imagen hidden lg:block absolute skew-x-[60deg] top-24 xl:top-32 right-0 xl:right-10 overflow-hidden lg:w-[423px] lg:h-[600px] pointer-events-none hover:skew-x-0 transition-all hover:z-10 hover:top-32 hover:scale-90 hover:xl:scale-100 rounded-xl peer group">
+      <div className="imagen absolute right-[5vw] xl:right-[10vw] bottom-0 rounded-xl overflow-hidden hidden lg:block w-[250px] xl:w-[300px] z-[2]">
         <Image
-          src={data.images.webp.image_url}
+          src={data.images.webp.large_image_url}
           alt=""
           width={0}
           height={0}
           sizes="100vw"
-          className="object-[50%,150px] skew-x-[-60deg] hover:object-[50%-0px] transition-all pointer-events-auto hover:skew-x-0 "
+          unoptimized
         />
       </div>
-      <div className="imagen hidden lg:block absolute skew-x-[60deg] top-8 right-10 xl:right-20 grayscale -z-[1] overflow-hidden lg:w-[423px] lg:h-[600px] pointer-events-none peer-hover:scale-50 transition-all">
-        <Image
-          src={data.images.webp.image_url}
-          alt=""
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="object-[50%,150px] skew-x-[-60deg]"
-        />
-      </div>
-      <div className="imagen hidden lg:block absolute skew-x-[60deg] top-44 xl:top-60 -right-10 xl:right-0 grayscale -z-[1] overflow-hidden lg:w-[423px] lg:h-[600px] pointer-events-none peer-hover:scale-50 transition-all">
-        <Image
-          src={data.images.webp.image_url}
-          alt=""
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="object-[50%,0px] skew-x-[-60deg]"
-        />
-      </div>
-      <div className="image-focus w-full fixed h-full top-0 left-0 z-[-1] peer-hover:z-[9] peer-hover:visible peer-hover:opacity-100 invisible opacity-0 peer-hover:bg-main-black/90 transition-opacity pointer-events-none"></div>
+      <ImagesDetalle id={id} />
       <div className="hero-content flex-col gap-2 relative w-fit flex">
         <ul className="subinfo flex gap-4 flex-wrap pl-2 items-center relative w-fit">
           <li className=" flex gap-1 items-center">
-            <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-semibold font-montserrat">
-              {data.score}
+            <span
+              className={`text-xs font-semibold font-montserrat ${
+                data.score
+                  ? "sm:text-sm lg:text-base xl:text-lg"
+                  : "capitalize lg:text-sm xl:text-base"
+              }`}
+            >
+              {data.score || "sin puntuar"}
             </span>
             <span className="icon-[solar--star-bold] h-3 w-3 lg:h-4 lg:w-4 xl:h-5 xl:w-5 text-main-color"></span>
           </li>
-          <li className="flex gap-1 items-center">
-            <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-semibold font-montserrat">
-              {data.year}
-            </span>
-            <span className="icon-[solar--calendar-bold] h-3 w-3 lg:h-4 lg:w-4 xl:h-5 xl:w-5 text-main-color"></span>
-          </li>
+          {data.year && (
+            <li className="flex gap-1 items-center">
+              <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-semibold font-montserrat">
+                {data.year}
+              </span>
+              <span className="icon-[solar--calendar-bold] h-3 w-3 lg:h-4 lg:w-4 xl:h-5 xl:w-5 text-main-color"></span>
+            </li>
+          )}
+
           <li className="flex gap-1 items-center">
             <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-semibold font-montserrat">
               {data.popularity}
@@ -93,12 +70,11 @@ export default async function SectionHero({ id }: Props) {
           </li>
           <li className="py-1 px-4 rounded-full bg-main-black flex items-center gap-2">
             <span
-              className={`w-1 h-1 lg:w-2 lg:h-2 rounded-full block ${
-                estados[data.status].color
-              }`}
+              style={{ background: color }}
+              className={`w-1 h-1 lg:w-2 lg:h-2 rounded-full block ${color}`}
             ></span>
             <span className="capitalize text-xs lg:text-sm xl:text-base font-bold font-montserrat">
-              {estados[data.status].nombre}
+              {LISTADO_ESTADOS_ANIME[data.status.toLowerCase()].nombre}
             </span>
           </li>
         </ul>
@@ -116,9 +92,11 @@ export default async function SectionHero({ id }: Props) {
             </li>
           ))}
         </ul>
-        <p className="text-xs lg:text-sm text-secondary-white max-w-[500px] md:max-w-[600px] xl:max-w-[750px] md:line-clamp-6 relative line-clamp-[8] xl:line-clamp-[10] lg:bg-main-black/50 rounded-md lg:backdrop-blur-sm">
-          {data.synopsis}
-        </p>
+        {data.synopsis && (
+          <p className="text-xs lg:text-sm text-secondary-white max-w-[500px] md:max-w-[600px] xl:max-w-[750px] md:line-clamp-6 relative line-clamp-[8] xl:line-clamp-[10] lg:bg-main-black/50 rounded-md lg:backdrop-blur-sm">
+            {data.synopsis}
+          </p>
+        )}
       </div>
     </div>
   );

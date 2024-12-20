@@ -22,10 +22,7 @@ export default function SectionPopulares() {
   const { data, isLoading } = useSWR(url, fetchData<FetchPopulares>);
 
   return (
-    <MainSection
-      tituloSeccion="lo mas popular"
-      customStyles="xl:col-start-1 xl:row-start-1"
-    >
+    <MainSection tituloSeccion="lo mas popular" customStyles="xl:col-start-1">
       <div className="flex flex-col gap-12">
         <ListadoGeneros
           handleGenero={handleGenero}
@@ -35,12 +32,12 @@ export default function SectionPopulares() {
           {isLoading && <MainCardSkeleton cantidad={12} />}
           {data && (
             <>
-              {data.data.map((anime) => (
+              {data.data.map((anime, i) => (
                 <MainCard
                   nombre={anime.title}
                   tipo="anime"
                   id={anime.mal_id}
-                  key={anime.mal_id}
+                  key={`${anime.mal_id}${i}`}
                   imagen={anime.images.webp.image_url}
                   destino={`/anime/${anime.mal_id}`}
                 >

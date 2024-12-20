@@ -1,4 +1,5 @@
 import SkewCard from "@/components/cards/SkewCard";
+import NoData from "@/components/errors/NoData";
 import { BASE_URL_ANIME } from "@/constants";
 import fetchData from "@/services/fetchData";
 import { FetchAnimeCharacters } from "@/types/fetchTypes";
@@ -20,15 +21,20 @@ export default async function ListadoPersonajes({ id, full }: Props) {
 
   return (
     <>
-      {mainPersonajes.map((personaje) => (
-        <SkewCard
-          key={personaje.character.mal_id}
-          imagen={personaje.character.images.webp.image_url}
-          titulo={personaje.character.name}
-          subtitulo={personaje.role}
-          destino={`/personaje/${personaje.character.mal_id}`}
-        />
-      ))}
+      {mainPersonajes && mainPersonajes.length >= 1 && (
+        <>
+          {mainPersonajes.map((personaje) => (
+            <SkewCard
+              key={personaje.character.mal_id}
+              imagen={personaje.character.images.webp.image_url}
+              titulo={personaje.character.name}
+              subtitulo={personaje.role}
+              destino={`/personaje/${personaje.character.mal_id}`}
+            />
+          ))}
+        </>
+      )}
+      {mainPersonajes && mainPersonajes.length === 0 && <NoData />}
     </>
   );
 }

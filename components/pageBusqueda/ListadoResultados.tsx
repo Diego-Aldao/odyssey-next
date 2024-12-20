@@ -7,31 +7,35 @@ interface Props {
   query: string;
   categoria: string;
   page: string;
+  genero: string;
 }
 
 export default async function ListadoResultados({
   query,
   categoria,
   page,
+  genero,
 }: Props) {
   const categoriaApi = LISTADO_CATEGORIAS_BUSQUEDA[categoria].nombreApi;
   const pagina = page ? `&page=${page}` : "";
-  const url = `${BASE_URL}/${categoriaApi}?q=${query}&order_by=favorites&sort=desc&limit=24${pagina}`;
+  const urlBusqueda = `${BASE_URL}/${categoriaApi}?q=${query}&order_by=favorites&sort=desc&limit=24${pagina}`;
+  const urlGenero = `${BASE_URL}/anime?genres=${genero}&order_by=favorites&sort=desc&limit=24${pagina}`;
 
   switch (categoria) {
     case "anime":
       return (
         <ListadoAnime
-          url={url}
+          url={genero ? urlGenero : urlBusqueda}
           query={query}
           categoria={categoria}
           page={page}
+          genero={genero}
         />
       );
     case "personajes":
       return (
         <ListadoPersonajes
-          url={url}
+          url={urlBusqueda}
           query={query}
           categoria={categoria}
           page={page}
@@ -41,7 +45,7 @@ export default async function ListadoResultados({
     case "personas":
       return (
         <ListadoPersonas
-          url={url}
+          url={urlBusqueda}
           query={query}
           categoria={categoria}
           page={page}

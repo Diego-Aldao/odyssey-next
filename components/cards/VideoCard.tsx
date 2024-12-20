@@ -102,6 +102,7 @@ export default function VideoCard({
               onError={() => {
                 setCurrentSrc(errorImage);
               }}
+              unoptimized
             />
           </div>
         </div>
