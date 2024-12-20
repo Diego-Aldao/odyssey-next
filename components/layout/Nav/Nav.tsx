@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBar from "../../SearchBar";
+import SearchBar from "../../SearchBar/SearchBar";
 import Logo from "../../Logo";
 import MenuMobile from "./MenuMobile";
 import Link from "next/link";
@@ -14,7 +14,7 @@ export default function Nav() {
         {LISTADO_NAVEGACION.map((itemNavegacion) => (
           <li key={itemNavegacion.id} className="w-fit ">
             <Link
-              className="text-sm lg:text-base whitespace-nowrap capitalize font-bold text-inherit  px-2 py-1 lg:px-4 lg:py-2 text-secondary-white hover:text-main-white transition-colors cursor-pointer"
+              className="text-sm lg:text-base whitespace-nowrap capitalize font-bold text-inherit px-2 py-1 lg:px-4 lg:py-2 cursor-pointer"
               href={itemNavegacion.link}
             >
               {itemNavegacion.nombre}
