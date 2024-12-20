@@ -14,15 +14,18 @@ import CardsBaseGrid from "@/components/cards/CardsBaseGrid";
 import MainSection from "@/components/containers/page-inicio/main-section";
 import VideoCardSkeleton from "@/components/skeletons/cards/VideoCardSkeleton";
 import ImageHero from "@/components/pageInicio/SectionHero/ImageHero";
+import SectionRecomendacion from "@/components/pageInicio/SectionRecomendacion";
+import SectionPersonajesPopulares from "@/components/pageInicio/SectionPersonajesPopulares";
 
 export default function Inicio() {
   return (
     <>
-      <ImageHero />
       <InicioMainContainer>
+        <ImageHero />
         <RandomAnime />
         <HeroSection />
         <GridMainContainer>
+          <SectionRecomendacion />
           <SectionPopulares />
           <MainSection
             tituloSeccion="ultimos trailers"
@@ -36,11 +39,13 @@ export default function Inicio() {
               </Suspense>
             </div>
           </MainSection>
+          <SectionPersonajesPopulares />
+
           <MainSection
             tituloSeccion="episodios recientes"
             customStyles=" xl:col-start-1"
             nombreDestino="ver mas episodios"
-            destino="/temporadas"
+            destino="/episodios"
           >
             <CardsBaseGrid customStyles="xl:grid-cols-4 2xl:grid-cols-6">
               <Suspense fallback={<MainCardSkeleton cantidad={12} />}>
@@ -49,9 +54,9 @@ export default function Inicio() {
             </CardsBaseGrid>
           </MainSection>
           <MainSection
-            tituloSeccion="episodios recientes"
+            tituloSeccion="anime de temporada"
             customStyles=" xl:col-start-1"
-            nombreDestino="ver mas episodios"
+            nombreDestino="ver temporadas"
             destino="/temporadas"
           >
             <CardsBaseGrid customStyles="xl:grid-cols-4 2xl:grid-cols-6">
@@ -62,7 +67,7 @@ export default function Inicio() {
           </MainSection>
           <MainSection
             tituloSeccion="top historico"
-            customStyles="xl:col-start-2 xl:row-start-3 xl:row-span-2"
+            customStyles="xl:col-start-2 xl:row-start-5 xl:row-span-2"
             nombreDestino="ver mas tops"
             destino="/tops"
             asideSection={true}
