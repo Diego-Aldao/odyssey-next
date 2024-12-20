@@ -7,7 +7,8 @@ import imagenMobile from "@/assets/mainPage/HomeHeroMobile.webp";
 
 export default function ImageHero() {
   const { ref, inView } = useInView({
-    threshold: 0.4,
+    threshold: 0.5,
+    triggerOnce: true,
   });
   return (
     <div
