@@ -42,52 +42,58 @@ export default function ListadoAnime({
       {isLoading && !currentData && <SearchCardSkeleton cantidad={12} />}
       {currentData && currentData.length >= 1 && (
         <>
-          {currentData.map((anime, i) => (
-            <SearchCard
-              key={`${anime.mal_id}${i}`}
-              destino={`/anime/${anime.mal_id}`}
-              imagen={anime.images.webp.image_url}
-              titulo={anime.title}
-            >
-              <ul className="flex gap-1 flex-wrap">
-                {anime.genres.slice(0, 2).map((genero) => (
-                  <li
-                    key={genero.mal_id}
-                    className="text-[10px] px-2 py-1 rounded-xl bg-secondary-black font-semibold"
-                  >
-                    {genero.name}
-                  </li>
-                ))}
-              </ul>
-              <div className="footer mt-auto w-full flex justify-between items-center">
-                {LISTADO_ESTADOS_ANIME[anime.status.toLowerCase()] && (
-                  <div className="py-1 px-3 rounded-full bg-secondary-black flex items-center gap-2">
-                    <span
-                      className={`w-1 h-1  rounded-full block ${
-                        LISTADO_ESTADOS_ANIME[anime.status.toLowerCase()].color
-                      }`}
-                    ></span>
-                    <span className="capitalize text-xs font-bold font-montserrat">
-                      {LISTADO_ESTADOS_ANIME[anime.status.toLowerCase()].nombre}
-                    </span>
-                  </div>
-                )}
+          {currentData.map((anime, i) => {
+            const color =
+              LISTADO_ESTADOS_ANIME[anime.status.toLowerCase()].color;
+            return (
+              <SearchCard
+                key={`${anime.mal_id}${i}`}
+                destino={`/anime/${anime.mal_id}`}
+                imagen={anime.images.webp.image_url}
+                titulo={anime.title}
+              >
+                <ul className="flex gap-1 flex-wrap">
+                  {anime.genres.slice(0, 2).map((genero) => (
+                    <li
+                      key={genero.mal_id}
+                      className="text-[10px] px-2 py-1 rounded-xl bg-secondary-black font-semibold"
+                    >
+                      {genero.name}
+                    </li>
+                  ))}
+                </ul>
+                <div className="footer mt-auto w-full flex justify-between items-center">
+                  {LISTADO_ESTADOS_ANIME[anime.status.toLowerCase()] && (
+                    <div className="py-1 px-3 rounded-full bg-secondary-black flex items-center gap-2">
+                      <span
+                        style={{ background: color }}
+                        className="w-1 h-1  rounded-full block"
+                      ></span>
+                      <span className="capitalize text-xs font-bold font-montserrat">
+                        {
+                          LISTADO_ESTADOS_ANIME[anime.status.toLowerCase()]
+                            .nombre
+                        }
+                      </span>
+                    </div>
+                  )}
 
-                {anime.score ? (
-                  <div className="score flex items-center gap-1">
-                    <span className="font-montserrat text-xs font-bold lg:text-sm">
-                      {anime.score}
+                  {anime.score ? (
+                    <div className="score flex items-center gap-1">
+                      <span className="font-montserrat text-xs font-bold lg:text-sm">
+                        {anime.score}
+                      </span>
+                      <span className="icon-[solar--star-bold] h-3 w-3 xl:h-4 xl:w-4 text-main-color"></span>
+                    </div>
+                  ) : (
+                    <span className="font-montserrat text-xs font-bold">
+                      sin puntuar
                     </span>
-                    <span className="icon-[solar--star-bold] h-3 w-3 xl:h-4 xl:w-4 text-main-color"></span>
-                  </div>
-                ) : (
-                  <span className="font-montserrat text-xs font-bold">
-                    sin puntuar
-                  </span>
-                )}
-              </div>
-            </SearchCard>
-          ))}
+                  )}
+                </div>
+              </SearchCard>
+            );
+          })}
           {data?.pagination.has_next_page && (
             <InfiniteScroll
               newUrl={`${nuevaUrl}&page=${data.pagination.current_page + 1}`}

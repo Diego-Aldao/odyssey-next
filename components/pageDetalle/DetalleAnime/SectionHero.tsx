@@ -13,6 +13,8 @@ interface Props {
 export default async function SectionHero({ id }: Props) {
   const { data } = await fetchData<FetchAnime>(`${BASE_URL_ANIME}/${id}/full`);
 
+  const color = LISTADO_ESTADOS_ANIME[data.status.toLowerCase()].color;
+
   return (
     <div className="hero h-[600px] md:h-[550px] xl:h-[650px] w-full flex flex-col items-start justify-end  max-w-[1440px] mx-auto lg:relative">
       <div className="imagen pointer-events-none absolute sm:h-[750px] md:h-[800px] top-0 -z-[1] right-0 after:absolute after:inset-0 after:bg-main-black/30  before:absolute before:inset-0 before:bg-gradient-to-t before:from-main-black before:to-transparent before:via-main-black/70 w-full overflow-x-hidden lg:hidden">
@@ -68,9 +70,8 @@ export default async function SectionHero({ id }: Props) {
           </li>
           <li className="py-1 px-4 rounded-full bg-main-black flex items-center gap-2">
             <span
-              className={`w-1 h-1 lg:w-2 lg:h-2 rounded-full block ${
-                LISTADO_ESTADOS_ANIME[data.status.toLowerCase()].color
-              }`}
+              style={{ background: color }}
+              className={`w-1 h-1 lg:w-2 lg:h-2 rounded-full block ${color}`}
             ></span>
             <span className="capitalize text-xs lg:text-sm xl:text-base font-bold font-montserrat">
               {LISTADO_ESTADOS_ANIME[data.status.toLowerCase()].nombre}
