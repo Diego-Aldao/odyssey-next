@@ -6,18 +6,9 @@
   --main-black: #202124;
   --secondary-black: #28292a;
   --tertiary-black: #3c4043;
-  --main-color: #6ce2d3;
+  --main-color: #b5cff8;
   --main-white: #d3d3d3;
   --secondary-white: #b1b1b6;
-}
-
-.background {
-  background-image: url("../assets/mainBackgroundSM.webp");
-}
-@media (min-width: 768px) {
-  .background {
-    background-image: url("../assets/mainBackground.webp");
-  }
 }
 
 h1,
@@ -70,7 +61,7 @@ img {
 
 /* Handle on hover */
 .custom-scroll::-webkit-scrollbar-thumb:hover {
-  background: #1690a5;
+  background: #8099c0;
 }
 
 /*ESTILOS LOADER*/
