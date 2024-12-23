@@ -3,16 +3,29 @@ import MainTitulo from "@/components/MainTitulo";
 import ListadoResultados from "@/components/pageBusqueda/ListadoResultados";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import { LISTADO_ALL_GENEROS } from "@/constants";
+import { Metadata } from "next";
 import React from "react";
 
 interface Props {
-  searchParams: { [key: string]: string };
-  params: { [key: string]: string[] };
+  searchParams: Promise<{ [key: string]: string }>;
+  params: Promise<{ [key: string]: string[] }>;
+}
+export async function generateMetadata({
+  params,
+  searchParams,
+}: Props): Promise<Metadata> {
+  const q = (await searchParams).q;
+  const categoria = (await params).categoria;
+  return {
+    title: `Búsqueda ${q ? `de '${q}'` : ""} en ${
+      categoria[0].charAt(0).toUpperCase() + categoria[0].slice(1)
+    } — Odyssey`,
+  };
 }
 
-export default function Busqueda({ searchParams, params }: Props) {
-  const { q, page, genres } = searchParams;
-  const { categoria } = params;
+export default async function Busqueda({ searchParams, params }: Props) {
+  const { q, page, genres } = await searchParams;
+  const categoria = (await params).categoria;
   const genero = LISTADO_ALL_GENEROS.find(
     (genero) => genero.id === Number(genres)
   );

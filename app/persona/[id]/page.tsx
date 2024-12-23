@@ -8,13 +8,24 @@ import { FetchPerson } from "@/types/fetchTypes";
 import React from "react";
 import DetalleGridContainer from "@/components/containers/page-detalle/detalle-grid-container";
 import AsideSubInfo from "@/components/pageDetalle/DetallePersona/AsideSubInfo";
+import { Metadata } from "next";
 
 interface Props {
-  params: { [key: string]: string };
+  params: Promise<{ [key: string]: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const id = (await params).id;
+  const { data } = await fetchData<FetchPerson>(
+    `${BASE_URL_PERSONA}/${id}/full`
+  );
+  return {
+    title: `${data.name} — Odyssey`,
+  };
 }
 
 export default async function PagePersona({ params }: Props) {
-  const { id } = params;
+  const id = (await params).id;
   const { data } = await fetchData<FetchPerson>(
     `${BASE_URL_PERSONA}/${id}/full`
   );
