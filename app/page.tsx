@@ -1,6 +1,6 @@
 import RandomAnime from "@/components/pageInicio/RandomAnime";
 import SectionPopulares from "@/components/pageInicio/SectionPopulares/SectionPopulares";
-import HeroSection from "@/components/pageInicio/SectionHero/HeroSection";
+import HeroSection from "@/components/pageInicio/HeroSection";
 import SectionTrailers from "@/components/pageInicio/SectionTrailers";
 import SectionEpisodios from "@/components/pageInicio/SectionEpisodios";
 import SectionTemporadas from "@/components/pageInicio/SectionTemporadas";
@@ -13,7 +13,6 @@ import MainCardSkeleton from "@/components/skeletons/cards/MainCardSkeleton";
 import CardsBaseGrid from "@/components/cards/CardsBaseGrid";
 import MainSection from "@/components/containers/page-inicio/main-section";
 import VideoCardSkeleton from "@/components/skeletons/cards/VideoCardSkeleton";
-import ImageHero from "@/components/pageInicio/SectionHero/ImageHero";
 import SectionRecomendacion from "@/components/pageInicio/SectionRecomendacion";
 import SectionPersonajesPopulares from "@/components/pageInicio/SectionPersonajesPopulares";
 
@@ -21,12 +20,11 @@ export default function Inicio() {
   return (
     <>
       <InicioMainContainer>
-        <ImageHero />
         <RandomAnime />
         <HeroSection />
-        <GridMainContainer>
-          <SectionRecomendacion />
+        <GridMainContainer customStyles="mt-[450px] xl:mt-[600px]">
           <SectionPopulares />
+          <SectionRecomendacion />
           <MainSection
             tituloSeccion="ultimos trailers"
             customStyles=" xl:col-start-1 xl:col-span-2"
