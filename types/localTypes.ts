@@ -51,3 +51,8 @@ export interface LocalItemCategoria {
 export interface LocalCategorias {
   [key: string]: LocalItemCategoria;
 }
+export interface LocalFiltroTop {
+  nombre: string;
+  type: string | null;
+  value: string | null;
+}
