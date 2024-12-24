@@ -9,11 +9,11 @@ import AnimeGridContainer from "@/components/containers/page-detalle/anime-grid-
 import SectionRecomendaciones from "@/components/pageDetalle/DetalleAnime/SectionRecomendaciones/SectionRecomendaciones";
 
 interface Props {
-  params: { [key: string]: string };
+  params: Promise<{ [key: string]: string }>;
 }
 
 export default async function PageDetalle({ params }: Props) {
-  const { id } = params;
+  const id = (await params).id;
   return (
     <AnimeGridContainer>
       <Suspense fallback={<MediaSkeleton />}>
