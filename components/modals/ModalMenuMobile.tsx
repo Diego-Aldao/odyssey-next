@@ -1,3 +1,5 @@
+import { LISTADO_NAVEGACION } from "@/constants";
+import Link from "next/link";
 import React from "react";
 
 interface Props {
@@ -8,7 +10,7 @@ interface Props {
 export default function ModalMenuMobile({ toggler, handleToggler }: Props) {
   return (
     <div
-      className={`contenedor fixed inset-0 bg-main-black/90 -z-[1] items-start flex transition-opacity md:hidden ${
+      className={`contenedor fixed inset-0 z-[-1] h-screen bg-main-black/90 items-start flex transition-opacity md:hidden ${
         toggler
           ? "opacity-100 visible pointer-events-auto"
           : "opacity-0 invisible pointer-events-none"
@@ -33,18 +35,15 @@ export default function ModalMenuMobile({ toggler, handleToggler }: Props) {
             </button>
           </div>
           <ul className="links flex flex-col gap-2">
-            <li className="capitalize font-medium text-sm text-main-white p-2 w-full bg-main-black/20 rounded-md">
-              ultimos episodios
-            </li>
-            <li className="capitalize font-medium text-sm text-main-white p-2 w-full bg-main-black/20 rounded-md">
-              anime de temporada
-            </li>
-            <li className="capitalize font-medium text-sm text-main-white p-2 w-full bg-main-black/20 rounded-md">
-              tops
-            </li>
-            <li className="capitalize font-medium text-sm text-main-white p-2 w-full bg-main-black/20 rounded-md">
-              trailers
-            </li>
+            {LISTADO_NAVEGACION.map((itemNavegacion) => (
+              <li
+                onClick={handleToggler}
+                key={itemNavegacion.id}
+                className="capitalize font-medium text-sm text-main-white p-2 w-full bg-main-black/20 rounded-md"
+              >
+                <Link href={itemNavegacion.link}>{itemNavegacion.nombre}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
