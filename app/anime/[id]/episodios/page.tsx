@@ -1,15 +1,20 @@
 import BackButton from "@/components/buttons/BackButton";
 import MainSection from "@/components/containers/page-inicio/main-section";
 import ListadoEpisodiosAnimeID from "@/components/pageDetalle/EpisodiosAnimeID/ListadoEpisodiosAnimeID";
+import { Metadata } from "next";
 
 interface Props {
-  params: { [key: string]: string };
-  searchParams: { [key: string]: string };
+  params: Promise<{ [key: string]: string }>;
+  searchParams: Promise<{ [key: string]: string }>;
 }
 
-export default function PageEpisodios({ params, searchParams }: Props) {
-  const { id } = params;
-  const { page } = searchParams;
+export const metadata: Metadata = {
+  title: "Episodios",
+};
+
+export default async function PageEpisodios({ params, searchParams }: Props) {
+  const id = (await params).id;
+  const page = (await searchParams).page;
   return (
     <div className="max-w-[1440px] w-full mx-auto lg:mt-40">
       <MainSection

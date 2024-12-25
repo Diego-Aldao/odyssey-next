@@ -2,55 +2,8 @@
 import React from "react";
 import { Select, SelectItem } from "@nextui-org/select";
 import { usePathname, useRouter } from "next/navigation";
-
-const listadoFiltros: Filtro[] = [
-  {
-    nombre: "Todos",
-    type: null,
-    value: null,
-  },
-  {
-    nombre: "Especiales",
-    type: "type",
-    value: "special",
-  },
-  {
-    nombre: "Ovas",
-    type: "type",
-    value: "ova",
-  },
-  {
-    nombre: "Películas",
-    type: "type",
-    value: "movie",
-  },
-  {
-    nombre: "En emisión",
-    type: "filter",
-    value: "airing",
-  },
-  {
-    nombre: "Proximamente",
-    type: "filter",
-    value: "upcoming",
-  },
-  {
-    nombre: "Mas populares",
-    type: "filter",
-    value: "bypopularity",
-  },
-  {
-    nombre: "Mas favoritos",
-    type: "filter",
-    value: "favorite",
-  },
-];
-
-interface Filtro {
-  nombre: string;
-  type: string | null;
-  value: string | null;
-}
+import { LISTADO_FILTROS_PAGE_TOPS } from "@/constants";
+import { LocalFiltroTop } from "@/types/localTypes";
 
 interface Props {
   searchParamsFilter: string | string[] | undefined;
@@ -60,24 +13,26 @@ export default function Filtros({ searchParamsFilter }: Props) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleClick = (filtro: Filtro) => {
+  const handleClick = (filtro: LocalFiltroTop) => {
     if (filtro.value === null) {
-      router.push(`${pathname}`);
+      router.push(`${pathname}`, { scroll: false });
     } else {
-      router.push(`${pathname}?${filtro.type}=${filtro.value}`);
+      router.push(`${pathname}?${filtro.type}=${filtro.value}`, {
+        scroll: false,
+      });
     }
   };
 
   return (
     <>
       <ul className="w-full col-span-full hidden lg:flex gap-4 justify-center">
-        {listadoFiltros.map((filtro) => (
+        {LISTADO_FILTROS_PAGE_TOPS.map((filtro) => (
           <li
             key={filtro.nombre}
             className={`py-2 px-3 xl:px-4 cursor-pointer hover:border-main-color border rounded-xl capitalize text-sm font-medium transition-colors ${
-              searchParamsFilter === filtro.value
+              searchParamsFilter === filtro.nombre
                 ? "border-main-color bg-main-color text-main-black"
-                : "border-main-white/20 bg-transparent text-main-white"
+                : "border-main-white/20 bg-main-black text-main-white"
             }`}
             onClick={() => {
               handleClick(filtro);
@@ -96,7 +51,7 @@ export default function Filtros({ searchParamsFilter }: Props) {
           trigger: "min-h-10 h-10 max-h-10",
         }}
       >
-        {listadoFiltros.map((filtro) => (
+        {LISTADO_FILTROS_PAGE_TOPS.map((filtro) => (
           <SelectItem
             key={filtro.nombre}
             value={filtro.nombre}

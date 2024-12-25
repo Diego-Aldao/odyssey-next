@@ -1,5 +1,6 @@
 import {
   LocalCategorias,
+  LocalFiltroTop,
   LocalFullGenero,
   LocalMainGenero,
   LocalObjetoTraduccion,
@@ -289,6 +290,49 @@ export const LISTADO_CATEGORIAS_BUSQUEDA: LocalCategorias = {
   },
 };
 
+export const LISTADO_FILTROS_PAGE_TOPS: LocalFiltroTop[] = [
+  {
+    nombre: "todos",
+    type: null,
+    value: null,
+  },
+  {
+    nombre: "especiales",
+    type: "type",
+    value: "special",
+  },
+  {
+    nombre: "ovas",
+    type: "type",
+    value: "ova",
+  },
+  {
+    nombre: "películas",
+    type: "type",
+    value: "movie",
+  },
+  {
+    nombre: "en emisión",
+    type: "filter",
+    value: "airing",
+  },
+  {
+    nombre: "proximamente",
+    type: "filter",
+    value: "upcoming",
+  },
+  {
+    nombre: "mas populares",
+    type: "filter",
+    value: "bypopularity",
+  },
+  {
+    nombre: "mas favoritos",
+    type: "filter",
+    value: "favorite",
+  },
+];
+
 export const BASE_URL: string = "https://api.jikan.moe/v4";
 
 export const BASE_URL_POPULARES: string =
@@ -322,7 +366,7 @@ export const LISTADO_ID_ANIME_RANDOM = [
 export const LISTADO_NAVEGACION = [
   {
     id: 1,
-    nombre: "últimos episodios",
+    nombre: "episodios",
     link: "/episodios",
   },
   {
