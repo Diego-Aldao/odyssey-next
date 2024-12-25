@@ -28,7 +28,7 @@ export default async function fetchData<T>(url: string): Promise<T> {
             reject(error); // Rechaza la promesa con el error 404
             break; // Rompe el bucle en caso de un error 404
           }
-          await delay(3000); // Espera antes de reintentar
+          await delay(1000); // Espera antes de reintentar
         }
       }
     });
