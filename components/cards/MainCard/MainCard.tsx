@@ -2,7 +2,6 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import UserInteraction from "./UserInteraction";
 import { useInView } from "react-intersection-observer";
 import errorImage from "@/assets/errorImageMainCard.webp";
 
@@ -19,10 +18,7 @@ interface Props {
 export default function MainCard({
   imagen,
   children,
-  id,
   customStyles,
-  nombre,
-  tipo,
   destino,
 }: Props) {
   const [ref, inView] = useInView({
@@ -52,7 +48,6 @@ export default function MainCard({
       `}
     >
       <div className="rounded-xl overflow-hidden w-full h-full relative after:absolute flex items-center justify-center after:w-[calc(100%-5px)] after:h-[calc(100%-5px)] xl:after:w-[calc(100%-8px)] xl:after:h-[calc(100%-8px)] after:rounded-xl after:bg-gradient-to-t  after:from-main-black group-hover:before:bg-transparent before:transition-colors after:via-main-black/10 before:absolute  before:bg-main-black/20 before:rounded-xl before:w-[calc(100%-5px)] before:h-[calc(100%-5px)] xl:before:w-[calc(100%-8px)] xl:before:h-[calc(100%-8px)] bg-main-black">
-        <UserInteraction id={id} nombre={nombre} tipo={tipo} />
         <Image
           src={currentSrc}
           alt=""
