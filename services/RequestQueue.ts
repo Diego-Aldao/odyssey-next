@@ -19,7 +19,7 @@ function createRequestQueue(maxRequestsPerSecond: number) {
         console.error("Error en la solicitud:", error);
       } finally {
         activeRequests--;
-        setTimeout(processQueue, 3000); // espera 5 segundos antes de procesar la siguiente solicitud
+        setTimeout(processQueue, 1000); // espera 2 segundos antes de procesar la siguiente solicitud
       }
     }
   }
