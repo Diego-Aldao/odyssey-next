@@ -13,7 +13,7 @@ export default function SectionRecomendacion() {
     threshold: 0.5,
   });
   return (
-    <div className="recomendacion w-full py-4 flex flex-col gap-4 col-span-full relative z-10">
+    <div className="recomendacion w-full pb-10 flex xl:row-start-2 flex-col gap-4 col-span-full relative z-10">
       <div className="header flex items-center gap-2">
         <h2 className="uppercase text-lg md:text-3xl lg:text-4xl xl:text-5xl italic font-black tracking-tight">
           recomendacion

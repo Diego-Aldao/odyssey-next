@@ -1,10 +1,12 @@
 import PagesNavigationMainContainer from "@/components/containers/pages-navigation/pages-navigation-main-container";
-import MainTitulo from "@/components/MainTitulo";
 import ListadoResultados from "@/components/pageBusqueda/ListadoResultados";
+import PagesNavigationHero from "@/components/PagesNavigationHero";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import { LISTADO_ALL_GENEROS } from "@/constants";
 import { Metadata } from "next";
 import React from "react";
+import imageHero from "@/assets/pageBusqueda/imageHeroBusqueda.webp";
+import imageHeroMobile from "@/assets/pageBusqueda/imageHeroBusquedaMobile.webp";
 
 interface Props {
   searchParams: Promise<{ [key: string]: string }>;
@@ -33,12 +35,14 @@ export default async function Busqueda({ searchParams, params }: Props) {
     ? `resultados del genero ${genero?.nombre}`
     : `resultados ${q ? `de '${q}'` : ""} en ${categoria[0]}`;
   return (
-    <PagesNavigationMainContainer>
-      <>
-        <MainTitulo
-          titulo={titulo}
-          customStyles="md:max-w-[700px] lg:max-w-[800px] xl:!max-w-[1100px] lg:line-clamp-2  sm:!text-4xl  md:!text-5xl lg:!text-6xl xl:!text-7xl"
-        />
+    <>
+      <PagesNavigationHero
+        imageDesktop={imageHero}
+        imageMobile={imageHeroMobile}
+        titulo={titulo}
+        customStylesTitulo="text-center"
+      />
+      <PagesNavigationMainContainer>
         <SearchBar
           initialType={categoria[0]}
           customStyles="max-w-[450px] mx-auto md:max-w-[650px] xl:max-w-[800px]"
@@ -49,7 +53,7 @@ export default async function Busqueda({ searchParams, params }: Props) {
           page={page}
           genero={genres}
         />
-      </>
-    </PagesNavigationMainContainer>
+      </PagesNavigationMainContainer>
+    </>
   );
 }

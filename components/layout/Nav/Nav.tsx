@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import SearchBar from "../../SearchBar/SearchBar";
 import Logo from "../../Logo";
@@ -5,11 +6,19 @@ import MenuMobile from "./MenuMobile";
 import Link from "next/link";
 import { LISTADO_NAVEGACION } from "@/constants";
 import User from "./User";
+import useScroll from "@/hooks/useScroll";
 
 export default function Nav() {
+  const scrollY = useScroll();
   return (
-    <header className="w-full absolute top-0 z-20 ">
-      <div className="contenedor w-full max-w-[1903px] mx-auto grid grid-cols-2 grid-rows-2 gap-4 lg:gap-x-6 sm:flex sm:items-center md:grid md:grid-cols-[120px,auto,44px] lg:grid-cols-[200px,auto,44px] pt-4 md:pt-6 lg:pt-8 px-4 md:px-8 lg:px-10 xl:flex">
+    <header
+      className={`w-full top-0 z-20 after:absolute after:inset-0 after:bg-gradient-to-b transition-transform-opacity  after:to-transparent pointer-events-none  ${
+        scrollY >= 600
+          ? "fixed translate-y-0 opacity-100 after:from-main-black after:via-main-black/60 h-48 after:via-70%"
+          : "absolute translate-y-0 opacity-100 after:from-transparent h-fit"
+      } ${scrollY > 100 && scrollY < 600 && "-translate-y-4 opacity-0"} `}
+    >
+      <div className="contenedor w-full max-w-[1903px] pointer-events-auto mx-auto grid grid-cols-2 grid-rows-2 gap-4 lg:gap-x-6 relative z-[2] sm:flex sm:items-center md:grid md:grid-cols-[120px,auto,44px] lg:grid-cols-[200px,auto,44px] pt-4 md:pt-6 lg:pt-8 px-4 md:px-8 lg:px-10 xl:flex">
         <Logo customStyles="w-fit h-fit self-center" />
         <ul className="menu-desktop hidden md:flex items-center gap-2 flex-1 xl:flex-initial sm:gap-4">
           {LISTADO_NAVEGACION.map((itemNavegacion) => (

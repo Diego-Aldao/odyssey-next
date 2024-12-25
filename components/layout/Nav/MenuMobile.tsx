@@ -1,10 +1,25 @@
 "use client";
 import ModalMenuMobile from "@/components/modals/ModalMenuMobile";
 import useToggler from "@/hooks/useToggler";
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function MenuMobile() {
   const { toggler, handleToggler } = useToggler();
+
+  // Bloquear/desbloquear el scroll según el estado del menú
+  useEffect(() => {
+    if (toggler) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Limpieza en caso de desmontaje
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [toggler]);
+
   return (
     <>
       <ModalMenuMobile toggler={toggler} handleToggler={handleToggler} />
