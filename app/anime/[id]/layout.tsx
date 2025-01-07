@@ -1,4 +1,6 @@
 import AnimeMainContainer from "@/components/containers/page-detalle/anime-main-container";
+import HeaderDetalle from "@/components/pageDetalle/DetalleAnime/HeaderDetalle";
+import SectionVideos from "@/components/pageDetalle/DetalleAnime/SectionVideos";
 import SectionHero from "@/components/pageDetalle/DetalleAnime/SectionHero";
 import HeroSkeleton from "@/components/skeletons/pageDetalle/HeroSkeleton";
 import { BASE_URL_ANIME } from "@/constants";
@@ -30,6 +32,8 @@ export default async function AnimeLayout({ children, params }: Props) {
       <Suspense fallback={<HeroSkeleton />}>
         <SectionHero id={id} />
       </Suspense>
+      <SectionVideos id={id} />
+      <HeaderDetalle id={id} />
       {children}
     </AnimeMainContainer>
   );
