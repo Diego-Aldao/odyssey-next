@@ -1,4 +1,6 @@
 import AnimeMainContainer from "@/components/containers/page-detalle/anime-main-container";
+import HeaderDetalle from "@/components/pageDetalle/DetalleAnime/HeaderDetalle";
+import SectionVideos from "@/components/pageDetalle/DetalleAnime/SectionVideos";
 import SectionHero from "@/components/pageDetalle/DetalleAnime/SectionHero";
 import HeroSkeleton from "@/components/skeletons/pageDetalle/HeroSkeleton";
 import { BASE_URL_ANIME } from "@/constants";
@@ -6,6 +8,7 @@ import fetchData from "@/services/fetchData";
 import { FetchAnime } from "@/types/fetchTypes";
 import { Metadata } from "next";
 import { Suspense } from "react";
+import VideosSkeleton from "@/components/skeletons/pageDetalle/VideosSkeleton";
 
 interface Props {
   children: React.ReactNode;
@@ -30,6 +33,10 @@ export default async function AnimeLayout({ children, params }: Props) {
       <Suspense fallback={<HeroSkeleton />}>
         <SectionHero id={id} />
       </Suspense>
+      <Suspense fallback={<VideosSkeleton />}>
+        <SectionVideos id={id} />
+      </Suspense>
+      <HeaderDetalle id={id} />
       {children}
     </AnimeMainContainer>
   );

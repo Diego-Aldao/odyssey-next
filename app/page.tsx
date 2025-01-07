@@ -19,10 +19,10 @@ import SectionPersonajesPopulares from "@/components/pageInicio/SectionPersonaje
 export default function Inicio() {
   return (
     <>
+      <HeroSection />
       <InicioMainContainer>
         <RandomAnime />
-        <HeroSection />
-        <GridMainContainer customStyles="mt-[450px] xl:mt-[600px]">
+        <GridMainContainer>
           <SectionPopulares />
           <SectionRecomendacion />
           <MainSection

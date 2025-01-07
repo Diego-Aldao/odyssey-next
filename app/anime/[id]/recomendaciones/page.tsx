@@ -1,7 +1,7 @@
 import BackButton from "@/components/buttons/BackButton";
 import MainSection from "@/components/containers/page-inicio/main-section";
-import ListadoPersonajes from "@/components/pageDetalle/DetalleAnime/ListadoPersonajes";
-import SkewCardSkeleton from "@/components/skeletons/cards/SkewCardSkeleton";
+import ListadoRecomendaciones from "@/components/pageDetalle/DetalleAnime/ListadoRecomendaciones";
+import MainCardSkeleton from "@/components/skeletons/cards/MainCardSkeleton";
 import { Metadata } from "next";
 import React, { Suspense } from "react";
 
@@ -10,17 +10,17 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  title: "Personajes",
+  title: "Recomendaciones",
 };
 
-export default async function PagePersonajes({ params }: Props) {
+export default async function PageRecomendaciones({ params }: Props) {
   const id = (await params).id;
   return (
     <div className="contenedor max-w-[1440px] w-full mx-auto">
-      <MainSection tituloSeccion="personajes">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 xl:gap-8">
-          <Suspense fallback={<SkewCardSkeleton cantidad={12} />}>
-            <ListadoPersonajes id={id} />
+      <MainSection tituloSeccion="recomendaciones">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+          <Suspense fallback={<MainCardSkeleton cantidad={12} />}>
+            <ListadoRecomendaciones id={id} />
           </Suspense>
         </div>
       </MainSection>

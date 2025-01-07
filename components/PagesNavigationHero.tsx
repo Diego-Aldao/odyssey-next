@@ -21,7 +21,7 @@ export default function PagesNavigationHero({
   customStylesTitulo,
 }: Props) {
   const [ref, inView] = useInView({
-    threshold: 0.5,
+    threshold: 0.4,
   });
   const [ref2, inView2] = useInView({
     threshold: 0.5,
@@ -29,7 +29,7 @@ export default function PagesNavigationHero({
   return (
     <div
       ref={ref}
-      className="w-full relative h-[500px] md:h-[500px] xl:h-[600px] flex flex-col items-start justify-end md:justify-start max-w-[1903px] mx-auto"
+      className="w-full relative h-[500px] xl:h-[600px] 2xl:h-[700px] flex flex-col items-start justify-end md:justify-start max-w-[1903px] mx-auto  after:absolute after:inset-0 after:bg-gradient-to-t after:from-main-black after:via-transparent after:to-main-black after:from-[2%]"
     >
       <div
         ref={ref2}
@@ -37,7 +37,7 @@ export default function PagesNavigationHero({
       >
         <div className="w-fit flex flex-col">
           <h1
-            className={`uppercase font-black relative italic tracking-tighter [text-shadow:4px_4px_#000,0px_0px_20px_#000] lg:[text-shadow:4px_4px_#000,0px_0px_40px_#000] xl:[text-shadow:4px_4px_#000,0px_0px_20px_#000] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl transition-transform-opacity ${
+            className={`uppercase font-black relative italic tracking-tighter [text-shadow:4px_4px_#000,0px_0px_20px_#000] lg:[text-shadow:4px_4px_#000,0px_0px_40px_#000] xl:[text-shadow:4px_4px_#000,0px_0px_20px_#000] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl transition-transform-opacity ${
               inView2
                 ? "lg:opacity-100 lg:translate-x-0"
                 : "lg:opacity-0 lg:-translate-x-2"
@@ -58,8 +58,10 @@ export default function PagesNavigationHero({
       </div>
 
       <div
-        className={`absolute top-0 left-0 p-2 imagen w-full h-full rounded-t-xl overflow-hidden opacity-30  transition-transform-opacity [-webkit-mask-image:-webkit-gradient(linear,_left_top,_left_bottom,_from(rgba(0,0,0,1)),_to(rgba(0,0,0,0)))] ${
-          inView ? " lg:opacity-30" : "lg:opacity-0"
+        className={`absolute top-0 left-0 p-2 imagen w-full h-full rounded-t-xl overflow-hidden  transition-transform-opacity  ${
+          inView
+            ? " lg:opacity-100 translate-y-0"
+            : "lg:opacity-0 -translate-y-4"
         }`}
       >
         <div className="imagen w-full h-full rounded-xl overflow-hidden">
@@ -71,7 +73,7 @@ export default function PagesNavigationHero({
             width={0}
             height={0}
             sizes="100vw"
-            className={`mix-blend-difference md:hidden ${customImagePosition}`}
+            className={`md:hidden ${customImagePosition}`}
             priority
           />
           <Image
@@ -82,7 +84,7 @@ export default function PagesNavigationHero({
             width={0}
             height={0}
             sizes="100vw"
-            className={`mix-blend-difference hidden md:inline-block ${customImagePosition}`}
+            className={`hidden md:inline-block ${customImagePosition}`}
             priority
           />
         </div>

@@ -1,12 +1,9 @@
 import React, { Suspense } from "react";
-import MediaAnime from "@/components/pageDetalle/DetalleAnime/MediaAnime/MediaAnime";
 import SectionEstadisticas from "@/components/pageDetalle/DetalleAnime/SectionEstadisticas/SectionEstadisticas";
-import SectionPersonajes from "@/components/pageDetalle/DetalleAnime/SectionPersonajes/SectionPersonajes";
-import SectionReviews from "@/components/pageDetalle/DetalleAnime/SectionReviews/SectionReviews";
-import MediaSkeleton from "@/components/skeletons/pageDetalle/MediaSkeleton";
 import EstadisticasSkeleton from "@/components/skeletons/pageDetalle/EstadisticasSkeleton";
-import AnimeGridContainer from "@/components/containers/page-detalle/anime-grid-container";
-import SectionRecomendaciones from "@/components/pageDetalle/DetalleAnime/SectionRecomendaciones/SectionRecomendaciones";
+import MainInfo from "@/components/pageDetalle/DetalleAnime/MainInfo";
+import ScrollTop from "@/components/pageDetalle/DetalleAnime/ScrollTop";
+import MainInfoSkeleton from "@/components/skeletons/pageDetalle/MainInfoSkeleton";
 
 interface Props {
   params: Promise<{ [key: string]: string }>;
@@ -15,16 +12,14 @@ interface Props {
 export default async function PageDetalle({ params }: Props) {
   const id = (await params).id;
   return (
-    <AnimeGridContainer>
-      <Suspense fallback={<MediaSkeleton />}>
-        <MediaAnime id={id} />
+    <div className="main-section w-full flex flex-col gap-8">
+      <ScrollTop />
+      <Suspense fallback={<MainInfoSkeleton />}>
+        <MainInfo id={id} />
       </Suspense>
       <Suspense fallback={<EstadisticasSkeleton />}>
         <SectionEstadisticas id={id} />
       </Suspense>
-      <SectionPersonajes id={id} />
-      <SectionRecomendaciones id={id} />
-      <SectionReviews id={id} />
-    </AnimeGridContainer>
+    </div>
   );
 }

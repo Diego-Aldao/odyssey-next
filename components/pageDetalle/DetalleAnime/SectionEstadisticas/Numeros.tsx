@@ -7,58 +7,31 @@ interface Props {
 }
 
 export default function Numeros({ data, customStyles }: Props) {
+  const dataEstadisticas = [
+    { titulo: "lo completaron", valor: data.completed },
+    { titulo: "lo estan viendo", valor: data.watching },
+    { titulo: "lo dejaron", valor: data.dropped },
+    { titulo: "lo tienen en pausa", valor: data.on_hold },
+    { titulo: "tienen planeado verlo", valor: data.plan_to_watch },
+    { titulo: "miembros", valor: data.total },
+  ];
   return (
     <ul
-      className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 lg:col-start-2 gap-2 lg:gap-0 ${customStyles}`}
+      className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-2 xl:col-start-2 gap-2 xl:gap-0 xl:content-between  ${customStyles}`}
     >
-      <li className="flex flex-col gap-1 lg:items-center">
-        <span className="text-xs capitalize xl:text-sm text-secondary-white">
-          lo completaron
-        </span>
-        <span className="text-3xl md:text-4xl font-montserrat font-semibold xl:text-5xl">
-          {data.completed.toLocaleString("es-AR")}
-        </span>
-      </li>
-      <li className="flex flex-col gap-1 lg:items-center">
-        <span className="text-xs capitalize xl:text-sm text-secondary-white">
-          lo estan viendo
-        </span>
-        <span className="text-3xl md:text-4xl font-montserrat font-semibold xl:text-5xl">
-          {data.watching.toLocaleString("es-AR")}
-        </span>
-      </li>
-      <li className="flex flex-col gap-1 lg:items-center">
-        <span className="text-xs capitalize xl:text-sm text-secondary-white">
-          lo dejaron
-        </span>
-        <span className="text-3xl md:text-4xl font-montserrat font-semibold xl:text-5xl">
-          {data.dropped.toLocaleString("es-AR")}
-        </span>
-      </li>
-      <li className="flex flex-col gap-1 lg:items-center">
-        <span className="text-xs capitalize xl:text-sm text-secondary-white">
-          lo tienen en pausa
-        </span>
-        <span className="text-3xl md:text-4xl font-montserrat font-semibold xl:text-5xl">
-          {data.on_hold.toLocaleString("es-AR")}
-        </span>
-      </li>
-      <li className="flex flex-col gap-1 lg:items-center">
-        <span className="text-xs capitalize xl:text-sm text-secondary-white">
-          tienen planeado verlo
-        </span>
-        <span className="text-3xl md:text-4xl font-montserrat font-semibold xl:text-5xl">
-          {data.plan_to_watch.toLocaleString("es-AR")}
-        </span>
-      </li>
-      <li className="flex flex-col gap-1 lg:items-center">
-        <span className="text-xs capitalize xl:text-sm text-secondary-white">
-          total
-        </span>
-        <span className="text-3xl md:text-4xl font-montserrat font-semibold xl:text-5xl">
-          {data.total.toLocaleString("es-AR")}
-        </span>
-      </li>
+      {dataEstadisticas.map((item, index) => (
+        <li
+          key={`${item.valor}${index}`}
+          className="flex flex-col gap-1 lg:items-center"
+        >
+          <span className="text-xs capitalize xl:text-sm text-secondary-white">
+            {item.titulo}
+          </span>
+          <span className="text-lg md:text-xl lg:text-2xl font-montserrat font-semibold xl:text-5xl">
+            {item.valor.toLocaleString("es-AR")}
+          </span>
+        </li>
+      ))}
     </ul>
   );
 }

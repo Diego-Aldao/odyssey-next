@@ -49,7 +49,7 @@ export default function MainContentPageTemporadas({
               key={`${anime.mal_id}${i}`}
               imagen={anime.images.webp.image_url}
               destino={`/anime/${anime.mal_id}`}
-              customStyles="2xl:!h-[310px]"
+              customStyles="2xl:!h-[310px] 2xl:!max-h-[310px]"
             >
               <InfoScore titulo={anime.title} score={anime.score} />
             </MainCard>

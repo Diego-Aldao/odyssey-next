@@ -25,7 +25,7 @@ export default async function ListadoRecomendaciones({ id }: Props) {
               tipo="anime"
               imagen={recomendacion.entry.images.webp.image_url}
               id={recomendacion.entry.mal_id}
-              customStyles="flex-1"
+              customStyles="2xl:!h-[310px] 2xl:!max-h-[310px]"
               destino={`/anime/${recomendacion.entry.mal_id}`}
             >
               <span className="text-xs font-medium line-clamp-1">

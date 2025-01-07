@@ -7,19 +7,17 @@ import React from "react";
 
 interface Props {
   id: string;
-  full?: boolean;
 }
 
-export default async function ListadoReviews({ id, full }: Props) {
+export default async function ListadoReviews({ id }: Props) {
   const { data } = await fetchData<FetchAnimeReviews>(
     `${BASE_URL_ANIME}/${id}/reviews`
   );
-  const reviews = full ? data : data.slice(0, 3);
   return (
     <>
-      {reviews && reviews.length >= 1 && (
+      {data && data.length >= 1 && (
         <>
-          {reviews.map((review) => (
+          {data.map((review) => (
             <ReviewCard
               key={review.mal_id}
               imagen={review.user.images.webp.image_url}
@@ -28,13 +26,12 @@ export default async function ListadoReviews({ id, full }: Props) {
               review={review.review}
               reacciones={review.reactions}
               reaccionesTotales={review.reactions.overall}
-              full={full || false}
             />
           ))}
         </>
       )}
 
-      {reviews && reviews.length === 0 && <NoData />}
+      {data && data.length === 0 && <NoData />}
     </>
   );
 }

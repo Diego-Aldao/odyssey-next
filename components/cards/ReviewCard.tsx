@@ -13,7 +13,6 @@ interface Props {
   review: string;
   reacciones: Reactions;
   reaccionesTotales: number;
-  full: boolean;
 }
 
 interface Reacciones {
@@ -39,7 +38,6 @@ export default function ReviewCard({
   review,
   reacciones,
   reaccionesTotales,
-  full,
 }: Props) {
   const { toggler, handleToggler } = useToggler();
   const [ref, inView] = useInView({
@@ -134,9 +132,7 @@ export default function ReviewCard({
           </div>
 
           <button
-            className={`button bg-secondary-black py-1 px-2 lg:py-2 lg:px-4 items-center gap-2 rounded-md capitalize text-xs lg:text-sm ml-auto font-medium ${
-              full ? "flex" : "hidden"
-            }`}
+            className="button bg-secondary-black py-1 px-2 lg:py-2 lg:px-4 items-center gap-2 rounded-md capitalize text-xs lg:text-sm ml-auto font-medium flex"
             onClick={handleToggler}
           >
             <span>{toggler ? "ocultar full review" : "ver full review"}</span>
