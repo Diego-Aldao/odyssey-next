@@ -26,7 +26,7 @@ export default async function ListadoEpisodios({ tipo }: Props) {
           key={anime.entry.mal_id}
           imagen={anime.entry.images?.webp.image_url || ""}
           destino={`/anime/${anime.entry.mal_id}/episodios`}
-          customStyles="2xl:!h-[310px]"
+          customStyles="2xl:!h-[310px] 2xl:!max-h-[310px]"
         >
           <InfoEpisodios anime={anime} />
         </MainCard>

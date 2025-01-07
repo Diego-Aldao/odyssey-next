@@ -9,7 +9,7 @@ export default function Logo({ customStyles }: Props) {
   return (
     <Link
       href="/"
-      className={`uppercase font-black italic font-montserrat text-lg md:text-2xl lg:text-4xl tracking-tighter text-main-white [text-shadow:-1px_-1px_#000,1px_1px_#000,-1px_1px_#000,-1px_1px_#000] ${customStyles}`}
+      className={`uppercase font-black italic font-montserrat text-lg md:text-2xl lg:text-4xl tracking-tighter text-main-white [text-shadow:-1px_-1px_#000,1px_1px_#000,-1px_1px_#000,-1px_1px_#000] ${customStyles} hover:text-main-color transition-colors`}
     >
       odyssey
     </Link>

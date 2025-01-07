@@ -24,7 +24,7 @@ export default function Nav() {
           {LISTADO_NAVEGACION.map((itemNavegacion) => (
             <li key={itemNavegacion.id} className="w-fit ">
               <Link
-                className="text-sm lg:text-base whitespace-nowrap capitalize font-bold text-inherit px-2 py-1 lg:px-4 lg:py-2 cursor-pointer"
+                className="text-sm lg:text-base hover:text-main-color transition-colors whitespace-nowrap capitalize font-bold text-inherit px-2 py-1 lg:px-4 lg:py-2 cursor-pointer"
                 href={itemNavegacion.link}
               >
                 {itemNavegacion.nombre}

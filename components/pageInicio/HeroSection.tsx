@@ -16,7 +16,7 @@ export default function HeroSection() {
   return (
     <div
       ref={ref}
-      className="w-full absolute top-0 left-0 h-[500px] xl:h-[600px] flex flex-col items-start justify-end md:justify-start max-w-[1903px] mx-auto after:absolute after:inset-0 after:bg-gradient-to-t after:from-main-black after:via-transparent after:to-main-black after:from-[2%]"
+      className="w-full relative top-0 left-0 h-[500px] xl:h-[600px] 2xl:h-[700px] flex flex-col items-start justify-end md:justify-start max-w-[1903px] mx-auto after:absolute after:inset-0 after:bg-gradient-to-t after:from-main-black after:via-transparent after:to-main-black after:from-[2%]"
     >
       <div
         ref={ref2}
@@ -60,7 +60,7 @@ export default function HeroSection() {
             width={0}
             height={0}
             sizes="100vw"
-            className={`mix-blend-difference md:hidden`}
+            className={`md:hidden`}
             priority
           />
           <Image
@@ -71,7 +71,7 @@ export default function HeroSection() {
             width={0}
             height={0}
             sizes="100vw"
-            className={`mix-blend-difference xl:object-[50%,70%] hidden md:inline-block`}
+            className={`xl:object-[50%,70%] 2xl:object-[50%,60%] hidden md:inline-block`}
             priority
           />
         </div>
