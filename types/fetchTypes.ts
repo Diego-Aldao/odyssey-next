@@ -287,6 +287,22 @@ export type Anime = {
   explicit_genres: [];
   themes: Genre[];
   demographics: [];
+  relations: Relation[];
+  theme: Theme;
+  external: External[];
+  streaming: External[];
+};
+export type Relation = {
+  relation: string;
+  entry: Demographic[];
+};
+export type External = {
+  name: string;
+  url: string;
+};
+export type Theme = {
+  openings: string[];
+  endings: string[];
 };
 
 export type Genre = {
