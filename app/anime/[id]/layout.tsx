@@ -8,6 +8,7 @@ import fetchData from "@/services/fetchData";
 import { FetchAnime } from "@/types/fetchTypes";
 import { Metadata } from "next";
 import { Suspense } from "react";
+import VideosSkeleton from "@/components/skeletons/pageDetalle/VideosSkeleton";
 
 interface Props {
   children: React.ReactNode;
@@ -32,7 +33,9 @@ export default async function AnimeLayout({ children, params }: Props) {
       <Suspense fallback={<HeroSkeleton />}>
         <SectionHero id={id} />
       </Suspense>
-      <SectionVideos id={id} />
+      <Suspense fallback={<VideosSkeleton />}>
+        <SectionVideos id={id} />
+      </Suspense>
       <HeaderDetalle id={id} />
       {children}
     </AnimeMainContainer>
