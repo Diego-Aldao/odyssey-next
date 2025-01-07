@@ -3,6 +3,7 @@ import SectionEstadisticas from "@/components/pageDetalle/DetalleAnime/SectionEs
 import EstadisticasSkeleton from "@/components/skeletons/pageDetalle/EstadisticasSkeleton";
 import MainInfo from "@/components/pageDetalle/DetalleAnime/MainInfo";
 import ScrollTop from "@/components/pageDetalle/DetalleAnime/ScrollTop";
+import MainInfoSkeleton from "@/components/skeletons/pageDetalle/MainInfoSkeleton";
 
 interface Props {
   params: Promise<{ [key: string]: string }>;
@@ -13,7 +14,9 @@ export default async function PageDetalle({ params }: Props) {
   return (
     <div className="main-section w-full flex flex-col gap-8">
       <ScrollTop />
-      <MainInfo id={id} />
+      <Suspense fallback={<MainInfoSkeleton />}>
+        <MainInfo id={id} />
+      </Suspense>
       <Suspense fallback={<EstadisticasSkeleton />}>
         <SectionEstadisticas id={id} />
       </Suspense>
