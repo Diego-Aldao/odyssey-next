@@ -1,4 +1,8 @@
-import { BASE_URL_ANIME, LISTADO_ESTADOS_ANIME } from "@/constants";
+import {
+  BASE_URL_ANIME,
+  LISTADO_ALL_GENEROS,
+  LISTADO_ESTADOS_ANIME,
+} from "@/constants";
 import fetchData from "@/services/fetchData";
 import { FetchAnime } from "@/types/fetchTypes";
 import Image from "next/image";
@@ -14,6 +18,11 @@ export default async function SectionHero({ id }: Props) {
   const { data } = await fetchData<FetchAnime>(`${BASE_URL_ANIME}/${id}/full`);
 
   const color = LISTADO_ESTADOS_ANIME[data.status.toLowerCase()].color;
+  const generosEspañol = data.genres
+    .map((genero) => {
+      return LISTADO_ALL_GENEROS.find((item) => item.id === genero.mal_id);
+    })
+    .filter((genero) => genero !== undefined);
 
   return (
     <div className="hero h-[600px] md:h-[550px] xl:h-[650px] w-full flex flex-col items-start justify-end  max-w-[1440px] mx-auto lg:relative">
@@ -53,21 +62,6 @@ export default async function SectionHero({ id }: Props) {
             </span>
             <span className="icon-[solar--star-bold] h-3 w-3 lg:h-4 lg:w-4 xl:h-5 xl:w-5 text-main-color"></span>
           </li>
-          {data.year && (
-            <li className="flex gap-1 items-center">
-              <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-semibold font-montserrat">
-                {data.year}
-              </span>
-              <span className="icon-[solar--calendar-bold] h-3 w-3 lg:h-4 lg:w-4 xl:h-5 xl:w-5 text-main-color"></span>
-            </li>
-          )}
-
-          <li className="flex gap-1 items-center">
-            <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-semibold font-montserrat">
-              {data.popularity}
-            </span>
-            <span className="icon-[solar--graph-up-bold] h-3 w-3 lg:h-4 lg:w-4 xl:h-5 xl:w-5 text-main-color"></span>
-          </li>
           <li className="py-1 px-4 rounded-full bg-main-black flex items-center gap-2">
             <span
               style={{ background: color }}
@@ -79,15 +73,15 @@ export default async function SectionHero({ id }: Props) {
           </li>
         </ul>
         <Link href={`/anime/${id}`}>
-          <h1 className="font-montserrat tracking-tighter xl:pr-2 xl:pl-1 lg:max-w-[700px] xl:max-w-[850px] [text-shadow:_2px_2px_#000] uppercase line-clamp-2 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-2xl font-black italic relative hover:text-main-color transition-colors">
+          <h1 className="font-montserrat w-fit tracking-tighter xl:pr-2 xl:pl-1 lg:max-w-[700px] xl:max-w-[850px] [text-shadow:_2px_2px_#000] uppercase line-clamp-2 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-2xl font-black italic relative hover:text-main-color transition-colors">
             {data.title}
           </h1>
         </Link>
         <ul className="tags flex gap-2 flex-wrap relative w-fit">
-          {data.genres.map((genero) => (
-            <li key={genero.mal_id}>
+          {generosEspañol.map((genero) => (
+            <li key={genero.id}>
               <span className="uppercase text-[10px] lg:text-xs font-semibold px-4 py-1 rounded-full bg-secondary-black">
-                {genero.name}
+                {genero.nombre}
               </span>
             </li>
           ))}
