@@ -7,23 +7,19 @@ import React from "react";
 
 interface Props {
   id: string;
-  full?: boolean;
 }
 
-export default async function ListadoPersonajes({ id, full }: Props) {
+export default async function ListadoPersonajes({ id }: Props) {
   const { data } = await fetchData<FetchAnimeCharacters>(
     `${BASE_URL_ANIME}/${id}/characters`
   );
   const personajesOrdenados = data.sort((a, b) => b.favorites - a.favorites);
-  const mainPersonajes = full
-    ? personajesOrdenados
-    : personajesOrdenados.slice(0, 12);
 
   return (
     <>
-      {mainPersonajes && mainPersonajes.length >= 1 && (
+      {personajesOrdenados && personajesOrdenados.length >= 1 && (
         <>
-          {mainPersonajes.map((personaje) => (
+          {personajesOrdenados.map((personaje) => (
             <SkewCard
               key={personaje.character.mal_id}
               imagen={personaje.character.images.webp.image_url}
@@ -34,7 +30,7 @@ export default async function ListadoPersonajes({ id, full }: Props) {
           ))}
         </>
       )}
-      {mainPersonajes && mainPersonajes.length === 0 && <NoData />}
+      {personajesOrdenados && personajesOrdenados.length === 0 && <NoData />}
     </>
   );
 }
